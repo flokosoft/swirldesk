@@ -1,6 +1,7 @@
 hyprland
 xdg-desktop-portal-hyprland
 hyprland-protocols
+hyprland-guiutils
 waybar
 kitty
 foot
