@@ -15,6 +15,6 @@ SwirlDesk ist ein persönliches Hyprland-Desktop-Setup für Debian mit Fokus auf
 ## Installation
 
 ```bash
-git clone https://github.com/DEINNAME/swirldesk.git ~/.config/swirldesk
+git clone https://github.com/flokosoft/swirldesk.git  ~/.config/swirldesk
 cd ~/.config/swirldesk
 ./install.sh
