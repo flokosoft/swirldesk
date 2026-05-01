@@ -131,6 +131,21 @@ echo "==> Setze Script-Rechte..."
 find "$SWIRL_DIR/scripts" -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
 find "$SWIRL_DIR/bin" -type f -exec chmod +x {} \; 2>/dev/null || true
 
+echo
+echo "==> Installiere zusätzliche Schriftarten aus SwirlDesk..."
+
+if [ -d "$SWIRL_DIR/fonts" ]; then
+    mkdir -p "$HOME/.local/share/fonts"
+    cp -r "$SWIRL_DIR/fonts/"* "$HOME/.local/share/fonts/" 2>/dev/null || true
+    fc-cache -fv >/dev/null 2>&1 || true
+fi
+
+if ! fc-match "JetBrainsMono Nerd Font" | grep -qi "JetBrainsMono"; then
+    echo "WARNUNG: JetBrainsMono Nerd Font scheint nicht korrekt installiert zu sein."
+else
+    echo "JetBrainsMono Nerd Font ist verfügbar."
+fi
+
 if [ -f "$SWIRL_DIR/link.sh" ]; then
     chmod +x "$SWIRL_DIR/link.sh"
 else
