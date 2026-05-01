@@ -132,6 +132,32 @@ find "$SWIRL_DIR/scripts" -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null 
 find "$SWIRL_DIR/bin" -type f -exec chmod +x {} \; 2>/dev/null || true
 
 echo
+echo "==> Prüfe Standardshell..."
+
+if command -v zsh >/dev/null 2>&1; then
+    CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+    ZSH_PATH="$(command -v zsh)"
+
+    if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
+        read -r -p "Soll zsh als Standardshell gesetzt werden? [Y/n] " reply
+        reply="${reply:-Y}"
+
+        case "$reply" in
+            Y|y|J|j|"")
+                chsh -s "$ZSH_PATH"
+                echo "zsh wurde als Standardshell gesetzt."
+                echo "Die Änderung gilt nach dem nächsten Login."
+                ;;
+            *)
+                echo "Standardshell bleibt unverändert."
+                ;;
+        esac
+    else
+        echo "zsh ist bereits die Standardshell."
+    fi
+fi
+
+echo
 echo "==> Installiere zusätzliche Schriftarten aus SwirlDesk..."
 
 if [ -d "$SWIRL_DIR/fonts" ]; then
@@ -144,6 +170,24 @@ if ! fc-match "JetBrainsMono Nerd Font" | grep -qi "JetBrainsMono"; then
     echo "WARNUNG: JetBrainsMono Nerd Font scheint nicht korrekt installiert zu sein."
 else
     echo "JetBrainsMono Nerd Font ist verfügbar."
+fi
+
+echo "==> Installiere Standard-Wallpaper..."
+
+if [ -d "$SWIRL_DIR/wallpapers" ]; then
+    mkdir -p "$HOME/Bilder/Wallpapers"
+    cp -rn "$SWIRL_DIR/wallpapers/"* "$HOME/Bilder/Wallpapers/" 2>/dev/null || true
+fi
+
+echo "==> Setze Standard-Theme..."
+
+mkdir -p "$SWIRL_DIR/state"
+
+if [ ! -L "$SWIRL_DIR/state/current_theme" ]; then
+    if [ -d "$SWIRL_DIR/themes/swirldesk-debian" ]; then
+        ln -sfn "$SWIRL_DIR/themes/swirldesk-debian" "$SWIRL_DIR/state/current_theme"
+        echo "swirldesk-debian" > "$SWIRL_DIR/state/current_theme_name"
+    fi
 fi
 
 if [ -f "$SWIRL_DIR/link.sh" ]; then

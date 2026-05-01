@@ -36,3 +36,6 @@ htop
 fastfetch
 blueman
 nwg-displays
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting

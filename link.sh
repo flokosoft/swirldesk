@@ -103,8 +103,10 @@ safe_link "$SWIRL_DIR/hypr/conf/input.conf" "$HOME/.config/hypr/conf/input.conf"
 safe_link "$SWIRL_DIR/hypr/conf/autostart.conf" "$HOME/.config/hypr/conf/autostart.conf"
 safe_link "$SWIRL_DIR/hypr/conf/keybinds.conf" "$HOME/.config/hypr/conf/keybinds.conf"
 safe_link "$SWIRL_DIR/hypr/conf/windowrules.conf" "$HOME/.config/hypr/conf/windowrules.conf"
+safe_link "$SWIRL_DIR/zsh/.zshrc" "$HOME/.zshrc"
 
 # monitor file bleibt lokal
 touch "$HOME/.config/hypr/monitors-nwg.conf"
 
 echo "==> Symlinks gesetzt."
+
