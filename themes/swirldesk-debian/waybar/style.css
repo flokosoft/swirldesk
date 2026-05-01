@@ -1,0 +1,115 @@
+@define-color bg rgba(21, 17, 22, 0.78);
+@define-color bg-hover rgba(215, 10, 83, 0.18);
+@define-color fg #f4e8ef;
+@define-color muted #c8aebb;
+@define-color active #d70a53;
+@define-color active2 #ff4f8b;
+@define-color warning #f0b86e;
+@define-color critical #f7768e;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Noto Sans", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @bg;
+    color: @fg;
+}
+
+tooltip {
+    background-color: rgba(15, 11, 16, 0.96);
+    border: 1px solid rgba(215, 10, 83, 0.42);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+tooltip label {
+    color: @fg;
+}
+
+#custom-appmenuicon {
+    font-size: 19px;
+    color: @active;
+    margin: 0 14px 0 12px;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    margin: 4px 3px;
+    padding: 0 7px;
+    color: @fg;
+    background: transparent;
+    border-radius: 14px;
+}
+
+#workspaces button.active {
+    color: #151116;
+    background: @active;
+}
+
+#workspaces button:hover {
+    background: @bg-hover;
+}
+
+#window {
+    color: @fg;
+    font-size: 13px;
+}
+
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#battery,
+#custom-battery,
+#clock,
+#tray,
+#custom-exit {
+    color: @fg;
+    margin: 0 10px 0 0;
+    padding: 0;
+    background: transparent;
+}
+
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-battery:hover,
+#clock:hover,
+#tray:hover,
+#custom-exit:hover {
+    color: @active2;
+}
+
+#custom-battery.warning,
+#battery.warning {
+    color: @warning;
+}
+
+#custom-battery.critical,
+#battery.critical {
+    color: @critical;
+}
+
+#network.disconnected,
+#pulseaudio.muted {
+    color: @critical;
+}
+
+#custom-exit {
+    color: @active;
+    font-size: 16px;
+    margin-right: 14px;
+}

@@ -1,0 +1,244 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SWIRL_DIR="$HOME/.config/swirldesk"
+PKG_FILE="$SWIRL_DIR/packages/debian.txt"
+
+echo "======================================"
+echo "        SwirlDesk Installer"
+echo "======================================"
+echo
+
+if ! command -v apt >/dev/null 2>&1; then
+    echo "Dieses Installationsscript ist aktuell für Debian/apt gedacht."
+    exit 1
+fi
+
+echo "==> Erstelle benötigte Ordner..."
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.local/bin"
+mkdir -p "$HOME/Bilder/Wallpapers"
+mkdir -p "$HOME/Bilder/Screenshots"
+mkdir -p "$SWIRL_DIR/state"
+
+echo "==> Aktualisiere Paketquellen..."
+sudo apt update
+
+echo "==> Installiere benötigte Pakete..."
+
+if [ -f "$PKG_FILE" ]; then
+    while read -r pkg; do
+        [ -z "$pkg" ] && continue
+        [[ "$pkg" =~ ^# ]] && continue
+
+        echo "----> Paket: $pkg"
+        if ! sudo apt install -y "$pkg"; then
+            echo "WARNUNG: Paket konnte nicht installiert werden: $pkg"
+            echo "         Wir machen weiter."
+        fi
+    done < "$PKG_FILE"
+else
+    echo "WARNUNG: Paketliste nicht gefunden: $PKG_FILE"
+fi
+
+echo
+echo "==> Setze Script-Rechte..."
+find "$SWIRL_DIR/scripts" -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
+find "$SWIRL_DIR/bin" -type f -exec chmod +x {} \; 2>/dev/null || true
+
+echo
+echo "==> Setze Symlinks..."
+"$SWIRL_DIR/link.sh"
+
+echo
+echo "==> Prüfe PATH..."
+
+if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
+    SHELL_NAME="$(basename "${SHELL:-bash}")"
+
+    if [ "$SHELL_NAME" = "zsh" ]; then
+        RC_FILE="$HOME/.zshrc"
+    else
+        RC_FILE="$HOME/.bashrc"
+    fi
+
+    if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$RC_FILE" 2>/dev/null; then
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$RC_FILE"
+        echo "PATH wurde in $RC_FILE ergänzt."
+    fi
+fi
+
+echo
+echo "==> Prüfe Hyprland-Basisdateien..."
+
+if [ ! -f "$HOME/.config/hypr/hyprland.conf" ]; then
+    cat > "$HOME/.config/hypr/hyprland.conf" <<'EOF'
+source = ~/.config/swirldesk/state/current_theme/hypr/colors.conf
+source = ~/.config/swirldesk/state/current_theme/hypr/appearance.conf
+
+source = ~/.config/hypr/conf/environment.conf
+source = ~/.config/hypr/conf/monitors.conf
+source = ~/.config/hypr/conf/input.conf
+source = ~/.config/hypr/conf/autostart.conf
+source = ~/.config/hypr/conf/keybinds.conf
+source = ~/.config/hypr/conf/windowrules.conf
+EOF
+fi
+
+if [ ! -f "$HOME/.config/hypr/conf/environment.conf" ]; then
+cat > "$HOME/.config/hypr/conf/environment.conf" <<EOF
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+
+env = QT_QPA_PLATFORM,wayland;xcb
+env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+env = MOZ_ENABLE_WAYLAND,1
+env = GDK_BACKEND,wayland,x11
+
+env = PATH,$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+EOF
+fi
+
+if [ ! -f "$HOME/.config/hypr/conf/monitors.conf" ]; then
+    touch "$HOME/.config/hypr/monitors-nwg.conf"
+    cat > "$HOME/.config/hypr/conf/monitors.conf" <<'EOF'
+source = ~/.config/hypr/monitors-nwg.conf
+EOF
+fi
+
+if [ ! -f "$HOME/.config/hypr/conf/input.conf" ]; then
+    cat > "$HOME/.config/hypr/conf/input.conf" <<'EOF'
+input {
+    kb_layout = de
+    follow_mouse = 1
+
+    touchpad {
+        natural_scroll = true
+        tap-to-click = true
+    }
+
+    sensitivity = 0
+}
+EOF
+fi
+
+if [ ! -f "$HOME/.config/hypr/conf/autostart.conf" ]; then
+    cat > "$HOME/.config/hypr/conf/autostart.conf" <<'EOF'
+exec-once = waybar
+exec-once = dunst
+exec-once = nm-applet
+exec-once = blueman-applet
+exec-once = ~/.config/swirldesk/scripts/wallpaper-restore.sh
+
+exec-once = wl-paste --type text --watch cliphist store
+exec-once = wl-paste --type image --watch cliphist store
+EOF
+fi
+
+if [ ! -f "$HOME/.config/hypr/conf/windowrules.conf" ]; then
+    cat > "$HOME/.config/hypr/conf/windowrules.conf" <<'EOF'
+windowrule = match:class ^(pavucontrol)$, float on
+windowrule = match:class ^(nm-connection-editor)$, float on
+windowrule = match:class ^(blueman-manager)$, float on
+
+windowrule = match:class ^(btop-floating)$, float on
+windowrule = match:class ^(btop-floating)$, size 950 620
+windowrule = match:class ^(btop-floating)$, center on
+
+windowrule = match:class ^(htop-floating)$, float on
+windowrule = match:class ^(htop-floating)$, size 950 620
+windowrule = match:class ^(htop-floating)$, center on
+
+windowrule = match:title ^(Picture-in-Picture)$, float on
+windowrule = match:title ^(Picture-in-Picture)$, pin on
+EOF
+fi
+
+if [ ! -f "$HOME/.config/hypr/conf/keybinds.conf" ]; then
+    cat > "$HOME/.config/hypr/conf/keybinds.conf" <<'EOF'
+$mainMod = SUPER
+$terminal = kitty
+$fileManager = thunar
+
+bind = $mainMod, RETURN, exec, $terminal
+bind = $mainMod CTRL, RETURN, exec, ~/.config/swirldesk/scripts/launcher.sh
+bind = $mainMod, D, exec, ~/.config/swirldesk/scripts/launcher.sh
+bind = $mainMod, E, exec, $fileManager
+bind = $mainMod, SPACE, exec, ~/.config/swirldesk/scripts/control-center.sh
+
+bind = $mainMod, Q, killactive
+bind = $mainMod, F, fullscreen
+bind = $mainMod SHIFT, E, exit
+
+bind = $mainMod, V, togglefloating
+bind = $mainMod, P, pseudo
+
+bind = $mainMod, L, exec, hyprlock
+bind = $mainMod SHIFT, Q, exec, ~/.config/swirldesk/scripts/power-menu.sh
+bind = $mainMod SHIFT, S, exec, ~/.config/swirldesk/scripts/control-center.sh
+bind = $mainMod SHIFT, R, exec, ~/.config/swirldesk/scripts/restart-ui.sh
+bind = $mainMod SHIFT, T, exec, ~/.config/swirldesk/scripts/theme-switcher.sh
+bind = $mainMod SHIFT, F1, exec, ~/.config/swirldesk/scripts/keybinds-help.sh
+
+bind = $mainMod, W, exec, ~/.config/swirldesk/scripts/wallpaper-select.sh
+bind = $mainMod SHIFT, W, exec, ~/.config/swirldesk/scripts/wallpaper-random.sh
+bind = $mainMod, C, exec, ~/.config/swirldesk/scripts/clipboard.sh
+bind = , Print, exec, ~/.config/swirldesk/scripts/screenshot.sh
+
+bind = $mainMod, left, movefocus, l
+bind = $mainMod, right, movefocus, r
+bind = $mainMod, up, movefocus, u
+bind = $mainMod, down, movefocus, d
+
+bind = $mainMod SHIFT, left, movewindow, l
+bind = $mainMod SHIFT, right, movewindow, r
+bind = $mainMod SHIFT, up, movewindow, u
+bind = $mainMod SHIFT, down, movewindow, d
+
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+bind = $mainMod CTRL, 1, movetoworkspacesilent, 1
+bind = $mainMod CTRL, 2, movetoworkspacesilent, 2
+bind = $mainMod CTRL, 3, movetoworkspacesilent, 3
+bind = $mainMod CTRL, 4, movetoworkspacesilent, 4
+bind = $mainMod CTRL, 5, movetoworkspacesilent, 5
+bind = $mainMod CTRL, 6, movetoworkspacesilent, 6
+bind = $mainMod CTRL, 7, movetoworkspacesilent, 7
+bind = $mainMod CTRL, 8, movetoworkspacesilent, 8
+bind = $mainMod CTRL, 9, movetoworkspacesilent, 9
+EOF
+fi
+
+echo
+echo "==> Installation abgeschlossen."
+echo
+echo "Starte Hyprland neu oder lade neu mit:"
+echo "  hyprctl reload"
+echo
+echo "SwirlDesk öffnen:"
+echo "  SUPER + SPACE"
+echo

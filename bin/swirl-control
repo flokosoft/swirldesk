@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec "$HOME/.config/swirldesk/scripts/control-center.sh" "$@"

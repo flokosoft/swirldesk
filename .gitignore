@@ -1,0 +1,12 @@
+state/*
+!state/.gitkeep
+
+# monitor layout ist oft gerätespezifisch
+hypr/monitors-nwg.conf
+
+*.log
+.cache/
+.DS_Store
+
+# lokale Maschinenkonfiguration
+local/

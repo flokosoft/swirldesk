@@ -1,0 +1,130 @@
+@define-color bg rgba(0, 0, 0, 0.40);
+@define-color bg-hover rgba(255, 255, 255, 0.16);
+@define-color fg #ffffff;
+@define-color muted #cccccc;
+@define-color active #ffffff;
+@define-color warning #ffb86c;
+@define-color critical #ff5555;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Noto Sans", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @bg;
+    color: @fg;
+}
+
+tooltip {
+    background-color: rgba(20, 20, 24, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+tooltip label {
+    color: @fg;
+}
+
+#custom-appmenuicon {
+    font-size: 19px;
+    color: @fg;
+    margin: 0 14px 0 12px;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    margin: 4px 3px;
+    padding: 0 7px;
+    color: @fg;
+    background: transparent;
+    border-radius: 14px;
+}
+
+#workspaces button.active {
+    color: #111111;
+    background: @active;
+}
+
+#workspaces button:hover {
+    background: @bg-hover;
+}
+
+#window {
+    color: @fg;
+    font-size: 13px;
+}
+
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#custom-battery,
+#clock,
+#tray,
+#custom-exit {
+    color: @fg;
+    margin: 0 10px 0 0;
+    padding: 0;
+    background: transparent;
+}
+
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-battery:hover,
+#clock:hover,
+#tray:hover,
+#custom-exit:hover {
+    color: @muted;
+}
+
+#custom-battery.warning {
+    color: @warning;
+}
+
+#custom-battery.critical {
+    color: @critical;
+}
+
+#custom-battery.charging,
+#custom-battery.plugged {
+    color: @fg;
+}
+
+#network.disconnected {
+    color: @critical;
+}
+
+#pulseaudio.muted {
+    color: @critical;
+}
+
+#tray {
+    margin-right: 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @critical;
+}
+
+#custom-exit {
+    font-size: 16px;
+    margin-right: 14px;
+}

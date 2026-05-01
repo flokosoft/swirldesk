@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec nwg-displays -m "$HOME/.config/hypr/monitors-nwg.conf" "$@"
