@@ -168,7 +168,7 @@ extract() {
 # --------
 # PATH additions
 # --------
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
 
 # # SwirlDesk terminal splash
 # case $- in

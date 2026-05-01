@@ -37,5 +37,17 @@ fastfetch
 blueman
 nwg-displays
 zsh
+fzf
+zoxide
+starship
 zsh-autosuggestions
 zsh-syntax-highlighting
+eza
+bat
+lazygit
+unzip
+p7zip-full
+unrar
+curl
+wget
+git
