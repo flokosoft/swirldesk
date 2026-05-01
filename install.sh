@@ -20,6 +20,74 @@ if [ ! -d "$SWIRL_DIR" ]; then
     exit 1
 fi
 
+DEBIAN_CODENAME="$(
+    . /etc/os-release
+    echo "${VERSION_CODENAME:-}"
+)"
+BACKPORTS_SUITE="${DEBIAN_CODENAME}-backports"
+
+has_backports() {
+    [ -n "$DEBIAN_CODENAME" ] || return 1
+
+    grep -Rqs "$BACKPORTS_SUITE" \
+        /etc/apt/sources.list \
+        /etc/apt/sources.list.d/*.list \
+        /etc/apt/sources.list.d/*.sources 2>/dev/null
+}
+
+add_backports() {
+    local sources_file="/etc/apt/sources.list.d/${BACKPORTS_SUITE}.sources"
+
+    echo "==> Trage $BACKPORTS_SUITE ein..."
+
+    sudo tee "$sources_file" >/dev/null <<EOF
+Types: deb
+URIs: http://deb.debian.org/debian
+Suites: $BACKPORTS_SUITE
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+
+    echo "==> Backports eingetragen: $sources_file"
+}
+
+echo "==> Debian-Codename: ${DEBIAN_CODENAME:-unbekannt}"
+
+if [ -z "$DEBIAN_CODENAME" ]; then
+    echo "FEHLER: Debian-Codename konnte nicht ermittelt werden."
+    exit 1
+fi
+
+if has_backports; then
+    echo "==> Backports gefunden: $BACKPORTS_SUITE"
+else
+    echo "==> Backports wurden nicht gefunden: $BACKPORTS_SUITE"
+    echo
+    read -r -p "Soll $BACKPORTS_SUITE automatisch eingetragen werden? [Y/n] " reply
+    reply="${reply:-Y}"
+
+    case "$reply" in
+        Y|y|J|j|"")
+            add_backports
+            echo "==> Aktualisiere Paketquellen nach Backports-Eintrag..."
+            sudo apt update
+            ;;
+        *)
+            echo "WARNUNG: Ohne Backports könnten einige Pakete fehlen oder zu alt sein."
+            echo
+            read -r -p "Trotzdem fortfahren? [y/N] " continue_reply
+            continue_reply="${continue_reply:-N}"
+            case "$continue_reply" in
+                Y|y|J|j) ;;
+                *)
+                    echo "Abbruch."
+                    exit 1
+                    ;;
+            esac
+            ;;
+    esac
+fi
+
 echo "==> Erstelle benötigte Ordner..."
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.local/bin"
@@ -43,9 +111,15 @@ if [ -f "$PKG_FILE" ]; then
         [[ "$pkg" =~ ^# ]] && continue
 
         echo "----> Paket: $pkg"
-        if ! sudo apt install -y "$pkg"; then
-            echo "WARNUNG: Paket konnte nicht installiert werden: $pkg"
-            echo "         Wir machen weiter."
+
+        if ! sudo apt install -y -t "$BACKPORTS_SUITE" "$pkg"; then
+            echo "WARNUNG: Backports-Installation fehlgeschlagen für: $pkg"
+            echo "         Versuche normale Installation..."
+
+            if ! sudo apt install -y "$pkg"; then
+                echo "WARNUNG: Paket konnte nicht installiert werden: $pkg"
+                echo "         Wir machen weiter."
+            fi
         fi
     done < "$PKG_FILE"
 else
