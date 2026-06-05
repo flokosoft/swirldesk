@@ -51,3 +51,5 @@ unrar
 curl
 wget
 git
+xfsettingsd
+bibata-cursor-theme
