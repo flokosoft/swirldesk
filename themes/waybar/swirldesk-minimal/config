@@ -96,6 +96,13 @@
     "on-click": "nm-connection-editor"
   },
 
+  "custom/wireguard": {
+      "exec": "~/.config/swirldesk/scripts/wg-status.sh",
+      "return-type": "json",
+      "interval": 5,
+      "on-click": "~/.config/swirldesk/scripts/wireguard-toggle.sh"
+  }
+
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 muted",
