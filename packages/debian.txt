@@ -20,6 +20,10 @@ pavucontrol
 network-manager-gnome
 thunar
 thunar-archive-plugin
+tumbler
+ffmpegthumbnailer
+gvfs
+gvfs-backends
 file-roller
 fonts-font-awesome
 fonts-noto-color-emoji
