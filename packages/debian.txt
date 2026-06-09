@@ -59,3 +59,7 @@ wget
 git
 xfsettingsd
 bibata-cursor-theme
+nextcloud-desktop
+gnome-keyring
+libsecret-tools
+seahorse

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VPN_NAME="wg0"
+VPN_NAME="mikrotik"
 
 if nmcli connection show --active | grep -q "^${VPN_NAME} "; then
     nmcli connection down "$VPN_NAME"

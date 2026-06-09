@@ -113,3 +113,11 @@ tooltip label {
     font-size: 16px;
     margin-right: 14px;
 }
+
+#custom-wireguard.connected {
+    color: #a3be8c;
+}
+
+#custom-wireguard.disconnected {
+    color: #bf616a;
+}
