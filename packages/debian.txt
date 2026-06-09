@@ -63,3 +63,5 @@ nextcloud-desktop
 gnome-keyring
 libsecret-tools
 seahorse
+wireguard-tools 
+network-manager
