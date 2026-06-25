@@ -72,6 +72,7 @@ tooltip label {
 #battery,
 #custom-battery,
 #clock,
+#custom-notifications,
 #tray,
 #custom-exit {
     color: @fg;
@@ -119,5 +120,13 @@ tooltip label {
 }
 
 #custom-wireguard.disconnected {
-    color: #bf616a;
+    color: @active;
+}
+
+#custom-notifications.active {
+    color: @fg;
+}
+
+#custom-notifications.paused {
+    color: @active;
 }

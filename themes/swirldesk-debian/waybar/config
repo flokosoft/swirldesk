@@ -22,6 +22,7 @@
     "pulseaudio",
     "custom/battery",
     "clock",
+    "custom/notifications",
     "tray",
     "custom/exit"
   ],
@@ -125,6 +126,14 @@
   "clock": {
     "format": " {:%H:%M}",
     "tooltip-format": "<big>{:%A, %d. %B %Y}</big>"
+  },
+
+  "custom/notifications": {
+    "exec": "~/.config/swirldesk/scripts/notification-status.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "~/.config/swirldesk/scripts/toggle-notifications.sh",
+    "tooltip": true
   },
 
   "tray": {
