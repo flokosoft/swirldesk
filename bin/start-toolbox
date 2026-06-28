@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+TOOLBOX="$HOME/Apps/jetbrains-toolbox/bin/jetbrains-toolbox"
+
+# Toolbox starten, falls sie noch nicht läuft
+if ! pgrep -f "$TOOLBOX" >/dev/null; then
+    "$TOOLBOX" &
+fi
+
+# Warten, bis das Fenster wirklich existiert
+for i in {1..50}; do
+    if hyprctl clients | grep -q "class: jetbrains-toolbox"; then
+        break
+    fi
+    sleep 0.1
+done
+
+# JetBrains/XWayland Zeit geben, seine gespeicherte Position zu setzen
+sleep 2
+
+# Mehrfach verschieben, falls Toolbox danach nochmal ihre Position restored
+for i in {1..15}; do
+    hyprctl dispatch movewindowpixel exact 100 100,class:jetbrains-toolbox >/dev/null 2>&1
+    sleep 0.2
+done
