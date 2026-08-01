@@ -201,3 +201,4 @@ case $- in
         fi
         ;;
 esac
+export PATH="/home/floo/.config/composer/vendor/bin:$PATH"
