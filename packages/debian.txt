@@ -66,3 +66,4 @@ seahorse
 wireguard-tools 
 network-manager
 mpv
+socat
