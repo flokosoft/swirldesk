@@ -3,6 +3,10 @@ set -euo pipefail
 
 SWIRL_DIR="$HOME/.config/swirldesk"
 CURRENT_THEME_LINK="$SWIRL_DIR/state/current_theme"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/swirldesk"
+ACTIVE_MONITORS="$STATE_DIR/monitors-active.conf"
+DEFAULT_MONITORS="$SWIRL_DIR/hypr/monitors/open.conf"
+
 
 echo "==> Setze SwirlDesk-Symlinks..."
 
@@ -108,5 +112,21 @@ safe_link "$SWIRL_DIR/zsh/.zshrc" "$HOME/.zshrc"
 # monitor file bleibt lokal
 touch "$HOME/.config/hypr/monitors-nwg.conf"
 
-echo "==> Symlinks gesetzt."
+# Aktives Monitorprofil initialisieren
+mkdir -p "$STATE_DIR"
 
+if [ ! -f "$DEFAULT_MONITORS" ]; then
+    echo "FEHLER: Standard-Monitorprofil fehlt: $DEFAULT_MONITORS"
+    exit 1
+fi
+
+# Nur bei einer Erstinstallation das sichere Laptop-Profil setzen.
+# Eine vorhandene Auswahl wie docked.conf bleibt erhalten.
+if [ ! -e "$ACTIVE_MONITORS" ] && [ ! -L "$ACTIVE_MONITORS" ]; then
+    ln -s "$DEFAULT_MONITORS" "$ACTIVE_MONITORS"
+    echo "----> Standard-Monitorprofil aktiviert: open.conf"
+else
+    echo "----> Aktives Monitorprofil bleibt erhalten: $(readlink -f "$ACTIVE_MONITORS")"
+fi
+
+echo "==> Symlinks gesetzt."
