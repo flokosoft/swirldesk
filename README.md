@@ -46,6 +46,7 @@ Aktivieren: Shift+Super+V / nmcli connection up mikrotik
 git clone https://github.com/flokosoft/swirldesk.git  ~/.config/swirldesk
 cd ~/.config/swirldesk
 ./install.sh
+```
 
 ## LID systemd
 
@@ -58,3 +59,5 @@ Inhalt:
 HandleLidSwitch=ignore
 HandleLidSwitchExternalPower=ignore
 HandleLidSwitchDocked=ignore
+```
+
