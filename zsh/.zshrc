@@ -202,3 +202,7 @@ case $- in
         ;;
 esac
 export PATH="/home/floo/.config/composer/vendor/bin:$PATH"
+
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
