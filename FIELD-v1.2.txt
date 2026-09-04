@@ -1,0 +1,11 @@
+SwirlDesk FIELD 1.2
+
+STABILITY RELEASE
+- Debian 13 greetd: _greetd + VT7
+- Nextcloud: tray/background autostart
+- FIELD CONTROL: centered
+- FIELD STATUS: upper-right, non-flickering
+- FIELD POWER: centered
+- FIELD KEYMAP: centered
+- CLEAN / AOR1 / MULTICAM profiles
+- no bundled font files

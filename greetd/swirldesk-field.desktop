@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=SwirlDesk FIELD
+Comment=SwirlDesk FIELD / Hyprland session
+Exec=/usr/local/bin/swirldesk-session
+Type=Application
+DesktopNames=Hyprland

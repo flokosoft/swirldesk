@@ -1,0 +1,9 @@
+# SwirlDesk FIELD // greetd
+# Debian 13 / Trixie: Debian's greetd package uses _greetd. Keep the greeter
+# on VT7 so the normal recovery/login TTYs remain available.
+[terminal]
+vt = 7
+
+[default_session]
+command = "/etc/greetd/swirldesk-field-greet"
+user = "_greetd"

@@ -41,6 +41,13 @@ scripts=(
   control-center-fallback.sh
   field-control-toggle.sh
   field-control.py
+  field-keymap-toggle.sh
+  field-keymap.py
+  keybinds-help.sh
+  keybinds-help-fallback.sh
+  field-greet-install.sh
+  nextcloud-start.sh
+  ui-start.sh
   restart-ui.sh
 )
 missing=0

@@ -1,0 +1,38 @@
+#!/bin/sh
+# SwirlDesk FIELD // greetd + tuigreet launcher
+# Debian 13 / tuigreet 0.9.x compatible: uses command-line options only.
+set -u
+PALETTE=/etc/greetd/swirldesk-field-vt-palette
+
+restore_palette() {
+    if command -v setvtrgb >/dev/null 2>&1; then
+        setvtrgb vga >/dev/null 2>&1 || true
+    fi
+}
+
+if command -v setvtrgb >/dev/null 2>&1 && [ -r "$PALETTE" ]; then
+    setvtrgb "$PALETTE" >/dev/null 2>&1 || true
+fi
+trap restore_palette EXIT INT TERM HUP
+
+# Keep the greeter deliberately sparse. The custom VT palette maps the ANSI
+# names below to FIELD's Coyote/Khaki/Olive colors.
+tuigreet \
+  --cmd /usr/local/bin/swirldesk-session \
+  --sessions /usr/local/share/wayland-sessions:/usr/share/wayland-sessions \
+  --time \
+  --time-format '%H:%M  //  %d %b %Y' \
+  --greeting 'SWIRLDESK // FIELD' \
+  --greet-align center \
+  --width 58 \
+  --window-padding 2 \
+  --container-padding 2 \
+  --prompt-padding 1 \
+  --remember \
+  --remember-user-session \
+  --asterisks \
+  --theme 'container=black;border=yellow;title=lightyellow;text=white;time=lightyellow;greet=lightyellow;prompt=yellow;input=white;action=darkgray;button=yellow'
+rc=$?
+restore_palette
+trap - EXIT INT TERM HUP
+exit "$rc"

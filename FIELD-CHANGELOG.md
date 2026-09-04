@@ -1,16 +1,32 @@
-# SwirlDesk FIELD 1.0
+# SwirlDesk FIELD 1.2
 
-Release/polish milestone based on the stable v0.9.x design.
+Stability and boot/session integration release.
 
-- FIELD CONTROL stays centered (`SUPER+SPACE`).
-- FIELD STATUS stays upper-right (`SUPER+I`) and uses selective GTK updates to avoid flicker.
-- New native FIELD POWER panel (`SUPER+CTRL+P`) with in-panel confirmation for logout, reboot and shutdown.
-- Preserves the Fuzzel power menu as a fallback when GTK3 PyGObject is unavailable or another SwirlDesk theme is active.
-- Adds `swirl-field` CLI for control/status/power/profile/check/doctor/restart/version.
-- Adds extended `field-doctor.sh` diagnostics.
-- Release activator validates the complete FIELD payload before relinking/reloading.
-- Runtime state is intentionally not part of the release payload and is preserved during activation.
-- Theme metadata bumped to 1.0.
-- Theme-switch notification no longer probes Dunst through `dunstctl`, avoiding the earlier Debian/Wayland D-Bus activation race.
-- Removes development `__pycache__` and stale version marker files from the release payload.
-- No fonts are bundled.
+## Fixed
+
+- FIELD GREET now uses Debian 13's `_greetd` service account instead of the
+  generic `greeter` account.
+- FIELD GREET defaults to VT7, matching Debian's greetd layout and avoiding the
+  normal login console.
+- tuigreet remember-cache ownership is prepared for `_greetd`.
+- Nextcloud Desktop autostart no longer opens a large tiled window at login.
+  It now starts through `nextcloud-start.sh` using `nextcloud --background`.
+- Nextcloud startup waits briefly for the tray and refuses to spawn a duplicate
+  client if another mechanism already started it.
+
+## Improved
+
+- `swirl-field doctor` checks greetd account/config integration and the
+  Nextcloud background-autostart wrapper.
+- FIELD preflight includes the UI startup and Nextcloud wrapper scripts.
+- Release metadata and CLI version updated to 1.2.
+
+## Preserved
+
+- FIELD CONTROL remains centered.
+- FIELD STATUS remains upper-right and updates values without full-window
+  redraw/flicker.
+- FIELD POWER and FIELD KEYMAP remain centered.
+- Coyote/Khaki notification theme and NTF state handling are unchanged.
+- CLEAN, AOR1 and MultiCam visual profiles are unchanged.
+- No font files are included.

@@ -5,6 +5,9 @@ hyprland-guiutils
 hyprlock
 hypridle
 waybar
+greetd 
+tuigreet 
+kbd
 kitty
 foot
 fuzzel

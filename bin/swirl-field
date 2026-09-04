@@ -2,14 +2,16 @@
 set -u
 ROOT="$HOME/.config/swirldesk"
 usage(){ cat <<'EOF'
-SwirlDesk FIELD 1.0
+SwirlDesk FIELD 1.2
 
 Usage: swirl-field <command>
 
   status            open/toggle FIELD STATUS
   control           open/toggle FIELD CONTROL
   power             open/toggle FIELD POWER
+  keymap            open/toggle FIELD KEYMAP
   profile NAME      apply clean | aor1 | multicam
+  greet ACTION      check | install | restore FIELD greetd/tuigreet setup
   check             run FIELD preflight
   doctor            run extended diagnostics
   restart           restart SwirlDesk UI
@@ -20,12 +22,15 @@ case "${1:-}" in
     status) exec "$ROOT/scripts/field-status-toggle.sh" ;;
     control) exec "$ROOT/scripts/field-control-toggle.sh" ;;
     power) exec "$ROOT/scripts/field-power-toggle.sh" ;;
+    keymap) exec "$ROOT/scripts/field-keymap-toggle.sh" ;;
     profile)
         case "${2:-}" in clean|aor1|multicam) exec "$ROOT/scripts/field-wallpaper-profile.sh" --apply "$2" ;; *) echo 'profile must be clean, aor1, or multicam' >&2; exit 2;; esac ;;
+    greet)
+        case "${2:-check}" in check|install|restore) exec "$ROOT/scripts/field-greet-install.sh" "$2" ;; *) echo 'greet action must be check, install, or restore' >&2; exit 2;; esac ;;
     check) exec "$ROOT/scripts/field-theme-check.sh" ;;
     doctor) exec "$ROOT/scripts/field-doctor.sh" ;;
     restart) exec "$ROOT/scripts/restart-ui.sh" ;;
-    version) echo 'SwirlDesk FIELD 1.0' ;;
+    version) echo 'SwirlDesk FIELD 1.2' ;;
     -h|--help|help|'') usage ;;
     *) usage >&2; exit 2 ;;
 esac

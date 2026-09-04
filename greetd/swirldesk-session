@@ -1,0 +1,11 @@
+#!/bin/sh
+# System-visible, user-neutral session wrapper for greetd/tuigreet.
+# $HOME belongs to the authenticated user when greetd starts this command.
+TARGET="$HOME/.config/swirldesk/bin/swirldesk-session"
+if [ -x "$TARGET" ]; then
+    exec "$TARGET"
+fi
+if command -v start-hyprland >/dev/null 2>&1; then
+    exec start-hyprland
+fi
+exec Hyprland
