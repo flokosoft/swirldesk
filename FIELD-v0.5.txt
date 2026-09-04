@@ -1,0 +1,2 @@
+SwirlDesk FIELD v0.5
+Focus: rugged GTK/Thunar chrome, FIELD icon overlay, safer theme switching.

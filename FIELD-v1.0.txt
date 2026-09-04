@@ -1,0 +1,10 @@
+SwirlDesk FIELD 1.0
+Coyote / Khaki rugged workstation profile for Debian + Hyprland.
+
+CONTROL: SUPER+SPACE (center)
+STATUS:  SUPER+I (upper-right)
+POWER:   SUPER+CTRL+P (center)
+LOCK:    SUPER+L
+
+Visual profiles: clean / aor1 / multicam
+CLI: swirl-field --help

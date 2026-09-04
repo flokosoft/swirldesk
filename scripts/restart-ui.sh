@@ -1,15 +1,27 @@
 #!/usr/bin/env bash
+set -u
 
-notify-send "SwirlDesk" "UI wird neu gestartet…"
+pkill -x waybar 2>/dev/null || true
+pkill -x swaybg 2>/dev/null || true
 
-pkill waybar 2>/dev/null
-pkill dunst 2>/dev/null
-pkill swaybg 2>/dev/null
+"$HOME/.config/swirldesk/scripts/ui-start.sh"
 
-sleep 0.3
+# Do not use dunstctl as the only readiness probe: on some Debian/Wayland
+# sessions Dunst serves org.freedesktop.Notifications while its private control
+# interface is not reachable.
+sleep 0.35
+online=0
+if command -v gdbus >/dev/null 2>&1; then
+    out=$(gdbus call --session \
+        --dest org.freedesktop.DBus \
+        --object-path /org/freedesktop/DBus \
+        --method org.freedesktop.DBus.NameHasOwner \
+        org.freedesktop.Notifications 2>/dev/null || true)
+    [[ "$out" == *true* ]] && online=1
+elif pgrep -x dunst >/dev/null 2>&1; then
+    online=1
+fi
 
-dunst &
-waybar &
-~/.config/hypr/scripts/wallpaper-restore.sh &
-
-notify-send "SwirlDesk" "UI neu gestartet"
+if (( online )); then
+    notify-send 'UI // ONLINE' 'SwirlDesk FIELD interface ready'
+fi

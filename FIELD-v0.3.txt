@@ -1,0 +1,16 @@
+SWIRLDESK FIELD v0.3
+====================
+
+After extracting into ~/.config/swirldesk:
+
+  chmod +x ~/.config/swirldesk/scripts/*.sh ~/.config/swirldesk/link.sh
+  ~/.config/swirldesk/scripts/field-v03-activate.sh
+
+Test:
+
+  SUPER+L       FIELD lockscreen
+  SUPER+I       FIELD STATUS
+  SUPER+CTRL+P  PWR menu
+  SUPER+SPACE   FIELD control center
+
+No fonts are included.

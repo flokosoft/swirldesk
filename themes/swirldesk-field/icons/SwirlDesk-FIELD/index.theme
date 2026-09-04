@@ -1,0 +1,26 @@
+[Icon Theme]
+Name=SwirlDesk FIELD
+Comment=Minimal coyote/khaki place icons for SwirlDesk FIELD
+Inherits=Papirus-Dark,Papirus,Adwaita,hicolor
+Directories=scalable/places,scalable/devices,scalable/status
+
+[scalable/places]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Places
+
+[scalable/devices]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Devices
+
+[scalable/status]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Status

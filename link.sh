@@ -89,13 +89,34 @@ safe_link "$CURRENT_THEME/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 mkdir -p "$HOME/.config/fastfetch"
 safe_link "$SWIRL_DIR/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"
 
+# Theme-specific icon overlay
+if [ -d "$CURRENT_THEME/icons/SwirlDesk-FIELD" ]; then
+    mkdir -p "$HOME/.local/share/icons"
+    safe_link "$CURRENT_THEME/icons/SwirlDesk-FIELD" "$HOME/.local/share/icons/SwirlDesk-FIELD"
+fi
+
 # GTK
 safe_link "$CURRENT_THEME/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 safe_link "$CURRENT_THEME/gtk/settings.ini" "$HOME/.config/gtk-4.0/settings.ini"
+if [ -f "$CURRENT_THEME/gtk/gtk-3.css" ]; then
+    safe_link "$CURRENT_THEME/gtk/gtk-3.css" "$HOME/.config/gtk-3.0/gtk.css"
+fi
+if [ -f "$CURRENT_THEME/gtk/gtk-4.css" ]; then
+    safe_link "$CURRENT_THEME/gtk/gtk-4.css" "$HOME/.config/gtk-4.0/gtk.css"
+fi
+
+# Theme-specific Starship prompt
+if [ -f "$CURRENT_THEME/starship/starship.toml" ]; then
+    safe_link "$CURRENT_THEME/starship/starship.toml" "$HOME/.config/starship.toml"
+fi
 
 # Hyprland
 safe_link "$SWIRL_DIR/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
-safe_link "$SWIRL_DIR/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
+if [ -f "$CURRENT_THEME/hyprlock/hyprlock.conf" ]; then
+    safe_link "$CURRENT_THEME/hyprlock/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
+else
+    safe_link "$SWIRL_DIR/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
+fi
 
 if [ -f "$SWIRL_DIR/hypr/hypridle.conf" ]; then
     safe_link "$SWIRL_DIR/hypr/hypridle.conf" "$HOME/.config/hypr/hypridle.conf"

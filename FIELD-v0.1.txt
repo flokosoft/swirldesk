@@ -1,0 +1,25 @@
+SwirlDesk FIELD v0.1
+====================
+
+Ziel:
+- Coyote/Khaki als Kernpalette
+- Olive als funktionale Sekundaerfarbe
+- AOR1/MultiCam nur als Inspiration, nicht als flaechige GUI-Tarnung
+- geringe Rundungen, 1px-Border, kaum Effekte
+- ruhige Topo-Wallpaper fuer echten Arbeitsbetrieb
+
+Enthalten:
+- themes/swirldesk-field/{hypr,waybar,fuzzel,dunst,kitty,gtk}
+- wallpapers/SwirlDeskFIELD/field-topo-minimal-1920x1200.png
+- wallpapers/SwirlDeskFIELD/field-topo-minimal-2560x1600.png
+- scripts/theme-switcher.sh (optional erweiterte Version mit Theme-Wallpaper-Support)
+
+Integration in bestehendes SwirlDesk:
+1. Inhalt dieses Pakets in ~/.config/swirldesk/ kopieren.
+2. scripts/theme-switcher.sh nur ersetzen, wenn das Wallpaper beim Themewechsel automatisch gesetzt werden soll.
+3. SUPER+SHIFT+T -> swirldesk-field waehlen.
+4. Bei Bedarf: swirl-restart-ui
+
+Fonts:
+Es werden absichtlich keine Fonts mitgeliefert. FIELD nutzt primaer JetBrainsMono Nerd Font,
+faellt in Waybar auf JetBrains Mono/Noto Sans zurueck. Dein bestehender Fonts-Ordner bleibt unveraendert.

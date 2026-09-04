@@ -1,0 +1,14 @@
+SwirlDesk FIELD v0.6 // VISUAL PROFILES
+
+New:
+- CLEAN / AOR1 GHOST / MULTICAM GHOST wallpaper profiles
+- 1920x1200 and 2560x1600 assets
+- profile persists through SwirlDesk UI restarts and theme switches
+- Hyprlock follows the selected FIELD visual profile automatically
+- right-click FIELD // in Waybar opens the visual profile selector
+- Control Center entry: DESKTOP // FIELD visual profile
+- no additional keyboard shortcut
+
+Design rule:
+Camouflage is deliberately low-contrast and edge-weighted. The working center
+remains calm. Coyote/Khaki are the identity colors; camouflage is texture, not UI chrome.

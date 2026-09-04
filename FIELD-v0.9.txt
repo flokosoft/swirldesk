@@ -1,0 +1,15 @@
+SwirlDesk FIELD v0.9 // Native Control Surface
+
+- SUPER+SPACE and SUPER+SHIFT+S open a real GTK FIELD CONTROL panel when
+  Python PyGObject/GTK3 is available.
+- No new keybinds were added.
+- Panel is edge-anchored and uses the same Coyote/Khaki instrument language as
+  FIELD STATUS, AUTH, NTF and PWR.
+- Live local state: CPU, memory, thermal, network, WireGuard, notifications,
+  audio, battery, display, local/Zulu time and active visual profile.
+- Direct controls: system monitor, network, WireGuard, Bluetooth, volume,
+  mixer, display, FIELD STATUS, launcher, wallpaper, visual profiles, lock,
+  restart UI, theme and power control.
+- A Fuzzel fallback is retained for non-FIELD themes and systems without GTK3
+  PyGObject.
+- No fonts are bundled.

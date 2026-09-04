@@ -1,0 +1,12 @@
+SwirlDesk FIELD v0.8 // VISUAL COHESION
+
+This release aligns the visible system surfaces around one FIELD language:
+- NTF cards: instrument-header format, coyote/khaki, no app icons.
+- PWR CONTROL: numbered actions and confirmation flow matching FIELD CONTROL.
+- AUTH lockscreen: edge rails, profile/node header, local + Zulu time, numbered live status rail.
+- STATUS: same local-node terminology and restrained edge-first hierarchy.
+- NTF compatibility state from v0.7.3 is included.
+- restart-ui no longer requires dunstctl private control to confirm Dunst readiness.
+- Expanded FIELD preflight checks prevent incomplete theme activation.
+
+No fonts are included.

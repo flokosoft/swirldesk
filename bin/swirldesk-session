@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+SWIRL="$HOME/.config/swirldesk"
+STATE="${XDG_STATE_HOME:-$HOME/.local/state}/swirldesk"
+
+mkdir -p "$STATE"
+
+# Bei JEDEM Login zunächst das sichere Laptop-Profil verwenden.
+ln -sfn \
+    "$SWIRL/hypr/monitors/open.conf" \
+    "$STATE/monitors-active.conf"
+
+exec /usr/bin/start-hyprland

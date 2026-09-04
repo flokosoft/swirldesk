@@ -1,0 +1,7 @@
+SWIRLDESK // FIELD v0.4
+FIELD SHELL / GTK PASS
+
+Install over an existing SwirlDesk FIELD v0.3 tree, then run:
+  ~/.config/swirldesk/scripts/field-v04-activate.sh
+
+Restart Thunar/GTK apps and open a new Kitty terminal to see all changes.

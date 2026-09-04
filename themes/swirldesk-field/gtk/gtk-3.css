@@ -1,0 +1,204 @@
+/* SwirlDesk FIELD // GTK3 v0.5
+ * Rugged workstation treatment: flat, low-noise, coyote/khaki hierarchy.
+ */
+@define-color field_bg #0b0d0a;
+@define-color field_surface #11140f;
+@define-color field_surface2 #181b15;
+@define-color field_surface3 #202319;
+@define-color field_text #d9d3c3;
+@define-color field_muted #908a7c;
+@define-color field_coyote #a68a5b;
+@define-color field_khaki #b3a06d;
+@define-color field_olive #66705b;
+@define-color field_ranger #505846;
+@define-color field_warning #c49a52;
+@define-color field_red #92534a;
+
+@define-color theme_bg_color @field_bg;
+@define-color theme_fg_color @field_text;
+@define-color theme_base_color @field_surface;
+@define-color theme_text_color @field_text;
+@define-color theme_selected_bg_color #403b2a;
+@define-color theme_selected_fg_color @field_text;
+@define-color insensitive_bg_color #0f110d;
+@define-color insensitive_fg_color #666a5f;
+
+window,
+.background {
+    background-color: @field_bg;
+    color: @field_text;
+}
+
+headerbar,
+.titlebar,
+toolbar {
+    background-image: none;
+    background-color: @field_surface;
+    color: @field_text;
+    border: 0;
+    border-bottom: 1px solid alpha(@field_coyote, 0.34);
+    box-shadow: none;
+}
+
+headerbar,
+.titlebar { min-height: 30px; }
+toolbar { padding: 3px 5px; }
+
+headerbar button,
+.titlebar button,
+toolbar button,
+button {
+    background-image: none;
+    background-color: transparent;
+    color: @field_text;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: none;
+    min-height: 24px;
+}
+
+button:hover,
+toolbar button:hover {
+    background-color: @field_surface3;
+    border-color: alpha(@field_coyote, 0.38);
+}
+
+button:checked,
+button:active {
+    background-color: #29291f;
+    border-color: alpha(@field_coyote, 0.72);
+    color: @field_khaki;
+}
+
+entry,
+searchentry {
+    background-color: #0e110d;
+    color: @field_text;
+    border: 1px solid alpha(@field_coyote, 0.34);
+    border-radius: 2px;
+    box-shadow: none;
+    min-height: 26px;
+}
+
+entry:focus,
+searchentry:focus {
+    border-color: @field_coyote;
+    box-shadow: inset 2px 0 alpha(@field_khaki, 0.42);
+}
+
+/* Thunar location/path buttons: compact instrument-strip feel. */
+.path-bar button,
+.path-bar .button {
+    background-color: #0e110d;
+    color: @field_muted;
+    border-color: alpha(@field_coyote, 0.22);
+    border-radius: 1px;
+    padding: 2px 6px;
+}
+.path-bar button:hover,
+.path-bar .button:hover {
+    color: @field_khaki;
+    border-color: alpha(@field_coyote, 0.55);
+}
+
+menu,
+.menu,
+popover,
+.context-menu {
+    background-color: @field_surface;
+    color: @field_text;
+    border: 1px solid alpha(@field_coyote, 0.38);
+    border-radius: 1px;
+}
+
+menuitem,
+modelbutton { min-height: 24px; }
+menuitem:hover,
+modelbutton:hover {
+    background-color: #29291f;
+    color: @field_khaki;
+}
+
+.view,
+treeview,
+iconview {
+    background-color: @field_bg;
+    color: @field_text;
+}
+
+.view:selected,
+treeview:selected,
+iconview:selected {
+    background-color: #403b2a;
+    color: @field_text;
+}
+
+.view:hover,
+treeview:hover {
+    background-color: alpha(@field_coyote, 0.07);
+}
+
+.sidebar,
+.sidebar .view,
+placessidebar,
+placessidebar viewport {
+    background-color: #0f120e;
+    color: @field_muted;
+}
+
+.sidebar row,
+placessidebar row { min-height: 29px; }
+.sidebar .view:selected,
+.sidebar row:selected,
+placessidebar row:selected {
+    background-color: #29291f;
+    color: @field_khaki;
+    border-left: 2px solid @field_coyote;
+}
+
+notebook > header {
+    background-color: #0e110d;
+    border-bottom: 1px solid alpha(@field_coyote, 0.30);
+}
+notebook > header tab {
+    background-color: transparent;
+    color: @field_muted;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 4px 10px;
+}
+notebook > header tab:checked {
+    color: @field_khaki;
+    border-bottom-color: @field_coyote;
+}
+
+statusbar {
+    background-color: #0e110d;
+    color: @field_muted;
+    border-top: 1px solid alpha(@field_coyote, 0.22);
+    padding: 2px 6px;
+}
+
+scrollbar {
+    background-color: transparent;
+}
+scrollbar slider {
+    background-color: #4d4b3d;
+    border-radius: 1px;
+    min-width: 5px;
+    min-height: 5px;
+}
+scrollbar slider:hover { background-color: @field_coyote; }
+
+separator {
+    background-color: alpha(@field_coyote, 0.20);
+    min-width: 1px;
+    min-height: 1px;
+}
+
+tooltip {
+    background-color: @field_surface;
+    color: @field_text;
+    border: 1px solid alpha(@field_coyote, 0.55);
+    border-radius: 0;
+}

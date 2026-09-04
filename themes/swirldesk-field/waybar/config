@@ -1,0 +1,116 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
+
+  "modules-left": [
+    "custom/fieldmark",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "hyprland/window"
+  ],
+
+  "modules-right": [
+    "custom/field-sys",
+    "custom/field-comms",
+    "custom/notifications",
+    "pulseaudio",
+    "custom/field-power",
+    "custom/field-time",
+    "tray",
+    "custom/exit"
+  ],
+
+  "custom/fieldmark": {
+    "format": "FIELD //",
+    "tooltip": true,
+    "tooltip-format": "SwirlDesk FIELD\nClick: Control Center\nRight click: Visual profile\nMiddle click: About",
+    "on-click": "~/.config/swirldesk/scripts/control-center.sh",
+    "on-click-right": "~/.config/swirldesk/scripts/field-wallpaper-profile.sh",
+    "on-click-middle": "~/.config/swirldesk/scripts/about.sh"
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}",
+    "persistent-workspaces": { "*": 6 }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 62,
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "WEB // $1",
+      "(.*) - Mozilla Firefox": "WEB // $1",
+      "(.*) - Visual Studio Code": "CODE // $1",
+      "(.*) — Thunar": "FILE // $1",
+      "(.*) - Thunar": "FILE // $1",
+      "FIELD STATUS": "STATUS // LOCAL NODE"
+    }
+  },
+
+  "custom/field-sys": {
+    "exec": "~/.config/swirldesk/scripts/field-waybar-sys.sh",
+    "return-type": "json",
+    "interval": 3,
+    "tooltip": true,
+    "on-click": "~/.config/swirldesk/scripts/field-status-toggle.sh",
+    "on-click-right": "kitty --class btop-floating -e btop"
+  },
+
+  "custom/field-comms": {
+    "exec": "~/.config/swirldesk/scripts/field-waybar-comms.sh",
+    "return-type": "json",
+    "interval": 4,
+    "tooltip": true,
+    "on-click": "nm-connection-editor",
+    "on-click-right": "~/.config/swirldesk/scripts/wireguard-toggle.sh"
+  },
+
+  "custom/notifications": {
+    "exec": "~/.config/swirldesk/scripts/notification-status.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "~/.config/swirldesk/scripts/toggle-notifications.sh",
+    "tooltip": true
+  },
+
+  "pulseaudio": {
+    "format": "AUD {volume:02}",
+    "format-muted": "AUD --",
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "custom/field-power": {
+    "exec": "~/.config/swirldesk/scripts/field-waybar-power.sh",
+    "return-type": "json",
+    "interval": 10,
+    "tooltip": true,
+    "on-click": "~/.config/swirldesk/scripts/field-status-toggle.sh",
+    "on-click-right": "~/.config/swirldesk/scripts/power-menu.sh"
+  },
+
+  "custom/field-time": {
+    "exec": "~/.config/swirldesk/scripts/field-waybar-time.sh",
+    "return-type": "json",
+    "interval": 10,
+    "tooltip": true
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 6
+  },
+
+  "custom/exit": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/swirldesk/scripts/power-menu.sh"
+  }
+}

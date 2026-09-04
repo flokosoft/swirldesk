@@ -1,0 +1,9 @@
+SwirlDesk FIELD v0.2
+
+Focus:
+- Coyote/Khaki status-rail
+- deterministic Dunst config (no blue default/drop-in overrides)
+- FIELD Control Center
+- optional SUPER+I FIELD STATUS console
+- reduced icon color noise
+- no bundled fonts

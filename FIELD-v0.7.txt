@@ -1,0 +1,18 @@
+SwirlDesk FIELD v0.7 // INFORMATION HIERARCHY
+
+WAYBAR
+FIELD //  [workspaces]       active context       SYS | COMMS | NTF | AUD | PWR | LOCAL
+
+FIELD STATUS (SUPER+I)
+[01] SYSTEM
+[02] COMMS
+[03] POWER
+[04] STORAGE
+
+FIELD CONTROL
+Click FIELD // or SUPER+SPACE. Existing actions remain, now in a numbered,
+consistent control list.
+
+Principle:
+Keep the working center quiet. Put persistent state at the edges. Use real local
+machine data only. Coyote/Khaki communicate identity; camouflage remains texture.

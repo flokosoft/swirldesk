@@ -1,0 +1,77 @@
+# SwirlDesk FIELD // Dunst v0.8
+# FIELD instrument-card notifications. No application icons, no default blue.
+
+[global]
+    monitor = 0
+    follow = mouse
+
+    width = 356
+    height = 118
+    origin = top-right
+    offset = 8x38
+    notification_limit = 5
+
+    progress_bar = true
+    progress_bar_height = 3
+    progress_bar_frame_width = 0
+    progress_bar_corner_radius = 0
+
+    indicate_hidden = true
+    transparency = 0
+    separator_height = 0
+    gap_size = 3
+    padding = 9
+    horizontal_padding = 11
+    text_icon_padding = 0
+
+    frame_width = 1
+    frame_color = "#a68a5b"
+    separator_color = frame
+
+    background = "#0b0d0a"
+    foreground = "#d9d3c3"
+    highlight = "#b3a06d"
+
+    sort = true
+    idle_threshold = 120
+
+    font = JetBrains Mono 10
+    line_height = 1
+
+    markup = full
+    format = "<span foreground='#a68a5b'><b>NTF //</b></span> <b>%s</b>\n<span foreground='#908a7c'>%b</span>"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+
+    icon_position = off
+    sticky_history = true
+    history_length = 20
+
+    corner_radius = 0
+
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#0b0d0a"
+    foreground = "#97907f"
+    frame_color = "#505846"
+    highlight = "#66705b"
+    timeout = 4
+
+[urgency_normal]
+    background = "#0b0d0a"
+    foreground = "#d9d3c3"
+    frame_color = "#a68a5b"
+    highlight = "#b3a06d"
+    timeout = 6
+
+[urgency_critical]
+    background = "#0b0d0a"
+    foreground = "#d9d3c3"
+    frame_color = "#92534a"
+    highlight = "#c49a52"
+    timeout = 0
