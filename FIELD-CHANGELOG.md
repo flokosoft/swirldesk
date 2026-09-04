@@ -1,32 +1,8 @@
-# SwirlDesk FIELD 1.2
+# SwirlDesk FIELD 1.2.1 // Fast startup hotfix
 
-Stability and boot/session integration release.
-
-## Fixed
-
-- FIELD GREET now uses Debian 13's `_greetd` service account instead of the
-  generic `greeter` account.
-- FIELD GREET defaults to VT7, matching Debian's greetd layout and avoiding the
-  normal login console.
-- tuigreet remember-cache ownership is prepared for `_greetd`.
-- Nextcloud Desktop autostart no longer opens a large tiled window at login.
-  It now starts through `nextcloud-start.sh` using `nextcloud --background`.
-- Nextcloud startup waits briefly for the tray and refuses to spawn a duplicate
-  client if another mechanism already started it.
-
-## Improved
-
-- `swirl-field doctor` checks greetd account/config integration and the
-  Nextcloud background-autostart wrapper.
-- FIELD preflight includes the UI startup and Nextcloud wrapper scripts.
-- Release metadata and CLI version updated to 1.2.
-
-## Preserved
-
-- FIELD CONTROL remains centered.
-- FIELD STATUS remains upper-right and updates values without full-window
-  redraw/flicker.
-- FIELD POWER and FIELD KEYMAP remain centered.
-- Coyote/Khaki notification theme and NTF state handling are unchanged.
-- CLEAN, AOR1 and MultiCam visual profiles are unchanged.
-- No font files are included.
+- Visible session startup is no longer serialized behind Dunst D-Bus checks.
+- Waybar and the wallpaper are launched immediately after Hyprland starts.
+- The exact FIELD Dunst still starts first, but its verification continues in the background.
+- Reduced the deliberate Dunst session-bus settle delay from 350 ms to 50 ms.
+- Keeps the v1.2 notification safeguards: Waybar checks NameHasOwner before using dunstctl, so it does not auto-activate default-blue Dunst.
+- Nextcloud remains independent and continues waiting for the tray in the background; it does not block the desktop.

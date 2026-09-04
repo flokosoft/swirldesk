@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
 set -u
 
-# FIELD session UI startup is intentionally serialized:
-# 1) exact themed Dunst owns org.freedesktop.Notifications
-# 2) Waybar starts
-# 3) wallpaper is restored
-# This prevents an early D-Bus activated default Dunst from surviving login.
+# SwirlDesk FIELD // fast visible session startup
+#
+# The old startup serialized Dunst -> Waybar -> wallpaper. That was robust,
+# but it also meant the desktop stayed visually empty while Dunst completed
+# its D-Bus ownership checks. Dunst startup is now detached from the visible
+# shell: it still enforces the exact FIELD config, while Waybar and wallpaper
+# can appear immediately.
 
-if ! "$HOME/.config/swirldesk/scripts/dunst-start.sh"; then
-    printf '[FIELD] notification service did not initialize; continuing UI startup\n' >&2
-fi
+ROOT="$HOME/.config/swirldesk"
+
+# Start the exact FIELD notification daemon first, but do not make the desktop
+# wait for its D-Bus verification loop. notification-status.sh uses
+# NameHasOwner before dunstctl, so Waybar will not auto-activate default Dunst.
+"$ROOT/scripts/dunst-start.sh" >/dev/null 2>&1 &
+
+# Bring up the visible desktop immediately.
+"$ROOT/scripts/wallpaper-restore.sh" >/dev/null 2>&1 &
 
 pkill -x waybar 2>/dev/null || true
 waybar &
-
-"$HOME/.config/swirldesk/scripts/wallpaper-restore.sh" &

@@ -82,9 +82,10 @@ known_notification_pid() {
     return 1
 }
 
-# Let the session bus settle for a moment. If something auto-activated the
-# default Dunst during login, we replace it below with the exact FIELD config.
-sleep 0.35
+# Do not deliberately stall the visible login path here. ui-start.sh runs this
+# helper asynchronously, and the ownership/retry loops below already handle
+# a session bus that is still settling or a competing notifier.
+sleep 0.05
 
 for daemon in xfce4-notifyd mako swaync notification-daemon dunst; do
     pkill -x "$daemon" 2>/dev/null || true
