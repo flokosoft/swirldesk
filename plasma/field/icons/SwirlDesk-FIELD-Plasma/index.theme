@@ -1,0 +1,33 @@
+[Icon Theme]
+Name=SwirlDesk FIELD Plasma
+Comment=Coyote/Khaki overlay for Plasma; Breeze Dark fallback for coherent symbolic/tray icons
+Inherits=breeze-dark,breeze,Adwaita,hicolor
+Directories=scalable/apps,scalable/places,scalable/devices,scalable/status
+
+[scalable/apps]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Applications
+
+[scalable/places]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Places
+
+[scalable/devices]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Devices
+
+[scalable/status]
+Size=48
+MinSize=16
+MaxSize=128
+Type=Scalable
+Context=Status

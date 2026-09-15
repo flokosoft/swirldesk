@@ -12,6 +12,17 @@ Usage: swirl-field <command>
   keymap            open/toggle FIELD KEYMAP
   profile NAME      apply clean | aor1 | multicam
   greet ACTION      check | install | restore FIELD greetd/tuigreet setup
+  plasma ACTION     install | apply | backup | restore | doctor
+                    profile clean|aor1|multicam
+                    panel apply|backup|restore|doctor
+                    interaction apply|doctor|restore
+                    window apply|doctor|restore
+                    shell apply|doctor|restore
+                    visual apply|doctor|restore
+                    dolphin apply|doctor|restore
+                    icons apply|doctor|restore
+                    notifications doctor
+                    power
   check             run FIELD preflight
   doctor            run extended diagnostics
   restart           restart SwirlDesk UI
@@ -27,6 +38,73 @@ case "${1:-}" in
         case "${2:-}" in clean|aor1|multicam) exec "$ROOT/scripts/field-wallpaper-profile.sh" --apply "$2" ;; *) echo 'profile must be clean, aor1, or multicam' >&2; exit 2;; esac ;;
     greet)
         case "${2:-check}" in check|install|restore) exec "$ROOT/scripts/field-greet-install.sh" "$2" ;; *) echo 'greet action must be check, install, or restore' >&2; exit 2;; esac ;;
+    plasma)
+        PF="$ROOT/plasma/field"
+        case "${2:-doctor}" in
+          install) exec "$PF/install.sh" ;;
+          apply) exec "$PF/scripts/apply-field.sh" ;;
+          backup) exec "$PF/scripts/backup-plasma.sh" ;;
+          restore) exec "$PF/scripts/restore-plasma.sh" "${3:-}" ;;
+          doctor) exec "$PF/scripts/doctor.sh" ;;
+          profile) exec "$PF/scripts/profile.sh" "${3:-aor1}" ;;
+          panel)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/panel-apply.sh" ;;
+              backup) exec "$PF/scripts/panel-backup.sh" ;;
+              restore) exec "$PF/scripts/panel-restore.sh" "${4:-}" ;;
+              doctor) exec "$PF/scripts/panel-doctor.sh" ;;
+              *) echo 'plasma panel action must be apply, backup, restore, or doctor' >&2; exit 2 ;;
+            esac ;;
+          interaction)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/interaction-apply.sh" ;;
+              doctor) exec "$PF/scripts/interaction-doctor.sh" ;;
+              restore) exec "$PF/scripts/interaction-restore.sh" "${4:-}" ;;
+              *) echo 'plasma interaction action must be apply, doctor, or restore' >&2; exit 2 ;;
+            esac ;;
+          window)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/window-apply.sh" ;;
+              doctor) exec "$PF/scripts/window-doctor.sh" ;;
+              restore) exec "$PF/scripts/window-restore.sh" "${4:-}" ;;
+              *) echo 'plasma window action must be apply, doctor, or restore' >&2; exit 2 ;;
+            esac ;;
+          shell)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/shell-apply.sh" ;;
+              doctor) exec "$PF/scripts/shell-doctor.sh" ;;
+              restore) exec "$PF/scripts/shell-restore.sh" "${4:-}" ;;
+              *) echo 'plasma shell action must be apply, doctor, or restore' >&2; exit 2 ;;
+            esac ;;
+          visual)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/visual-apply.sh" ;;
+              doctor) exec "$PF/scripts/visual-doctor.sh" ;;
+              restore) exec "$PF/scripts/visual-restore.sh" ;;
+              *) echo 'plasma visual action must be apply, doctor, or restore' >&2; exit 2 ;;
+            esac ;;
+          dolphin)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/dolphin-apply.sh" ;;
+              doctor) exec "$PF/scripts/dolphin-doctor.sh" ;;
+              restore) exec "$PF/scripts/dolphin-restore.sh" "${4:-}" ;;
+              *) echo 'plasma dolphin action must be apply, doctor, or restore' >&2; exit 2 ;;
+            esac ;;
+          icons)
+            case "${3:-doctor}" in
+              apply) exec "$PF/scripts/app-icons-apply.sh" ;;
+              doctor) exec "$PF/scripts/app-icons-doctor.sh" ;;
+              restore) exec "$PF/scripts/app-icons-restore.sh" "${4:-}" ;;
+              *) echo 'plasma icons action must be apply, doctor, or restore' >&2; exit 2 ;;
+            esac ;;
+          notifications)
+            case "${3:-doctor}" in
+              doctor) exec "$PF/scripts/notification-doctor.sh" ;;
+              *) echo 'plasma notifications action must be doctor' >&2; exit 2 ;;
+            esac ;;
+          power) exec "$PF/scripts/plasma-power-toggle.sh" ;;
+          *) echo 'plasma action must be install, apply, backup, restore, doctor, profile, or panel' >&2; exit 2 ;;
+        esac ;;
     check) exec "$ROOT/scripts/field-theme-check.sh" ;;
     doctor) exec "$ROOT/scripts/field-doctor.sh" ;;
     restart) exec "$ROOT/scripts/restart-ui.sh" ;;

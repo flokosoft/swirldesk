@@ -1,0 +1,14 @@
+{
+  "KPlugin": {
+    "Name": "SwirlDesk FIELD Workspaces",
+    "Description": "FIELD move-and-follow shortcuts for Plasma 6",
+    "Icon": "preferences-desktop-virtual",
+    "Authors": [{"Name": "SwirlDesk FIELD"}],
+    "Id": "swirldesk-field-workspaces",
+    "Version": "0.8.6",
+    "License": "MIT"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}

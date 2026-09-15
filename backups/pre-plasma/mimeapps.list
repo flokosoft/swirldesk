@@ -1,0 +1,12 @@
+[Added Associations]
+image/jpeg=gimp.desktop;
+application/pdf=firefox-esr.desktop;org.pwmt.zathura-pdf-poppler.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop;
+image/png=firefox-esr.desktop;display-im7.q16.desktop;
+
+[Default Applications]
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+x-scheme-handler/mailto=brave-browser.desktop
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+image/png=display-im7.q16.desktop

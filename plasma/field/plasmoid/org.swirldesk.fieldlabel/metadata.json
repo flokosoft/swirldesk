@@ -1,0 +1,13 @@
+{
+  "KPlugin": {
+    "Authors": [{"Name": "SwirlDesk FIELD"}],
+    "Category": "Utilities",
+    "Description": "SwirlDesk FIELD identity label for the Plasma rail",
+    "Icon": "computer-laptop",
+    "Id": "org.swirldesk.fieldlabel",
+    "Name": "FIELD //",
+    "Version": "0.3"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "KPackageStructure": "Plasma/Applet"
+}

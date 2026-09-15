@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="68" viewBox="0 0 34 68">
+  <!-- header 0..33 -->
+  <rect id="header-topleft" x="0" y="0" width="1" height="1" fill="#a68a5b"/>
+  <rect id="header-top" x="1" y="0" width="32" height="1" fill="#a68a5b"/>
+  <rect id="header-topright" x="33" y="0" width="1" height="1" fill="#a68a5b"/>
+  <rect id="header-left" x="0" y="1" width="1" height="32" fill="#505846"/>
+  <rect id="header-center" x="1" y="1" width="32" height="32" fill="#181b15"/>
+  <rect id="header-right" x="33" y="1" width="1" height="32" fill="#505846"/>
+  <rect id="header-bottomleft" x="0" y="33" width="1" height="1" fill="#505846"/>
+  <rect id="header-bottom" x="1" y="33" width="32" height="1" fill="#505846"/>
+  <rect id="header-bottomright" x="33" y="33" width="1" height="1" fill="#505846"/>
+  <!-- footer 34..67 -->
+  <rect id="footer-topleft" x="0" y="34" width="1" height="1" fill="#505846"/>
+  <rect id="footer-top" x="1" y="34" width="32" height="1" fill="#505846"/>
+  <rect id="footer-topright" x="33" y="34" width="1" height="1" fill="#505846"/>
+  <rect id="footer-left" x="0" y="35" width="1" height="32" fill="#505846"/>
+  <rect id="footer-center" x="1" y="35" width="32" height="32" fill="#181b15"/>
+  <rect id="footer-right" x="33" y="35" width="1" height="32" fill="#505846"/>
+  <rect id="footer-bottomleft" x="0" y="67" width="1" height="1" fill="#a68a5b"/>
+  <rect id="footer-bottom" x="1" y="67" width="32" height="1" fill="#a68a5b"/>
+  <rect id="footer-bottomright" x="33" y="67" width="1" height="1" fill="#a68a5b"/>
+  <rect id="hint-top-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="hint-left-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="hint-right-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="hint-bottom-margin" x="0" y="0" width="1" height="1" fill="none"/>
+</svg>

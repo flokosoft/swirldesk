@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FIELD // Terminal
+Comment=Open Konsole for SwirlDesk FIELD Plasma
+Exec=konsole
+Icon=utilities-terminal
+NoDisplay=true
+StartupNotify=true
+X-KDE-GlobalAccel-CommandShortcut=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FIELD // Files
+Comment=Open Dolphin for SwirlDesk FIELD Plasma
+Exec=dolphin
+Icon=system-file-manager
+NoDisplay=true
+StartupNotify=true
+X-KDE-GlobalAccel-CommandShortcut=true

@@ -1,0 +1,16 @@
+{
+  "KPlugin": {
+    "Name": "SwirlDesk FIELD Launchers",
+    "Description": "Native KWin shortcuts for FIELD // Plasma application launchers",
+    "Icon": "system-run",
+    "Authors": [
+      { "Name": "SwirlDesk FIELD" }
+    ],
+    "Id": "swirldesk-field-launchers",
+    "Version": "0.5.2",
+    "License": "MIT"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}

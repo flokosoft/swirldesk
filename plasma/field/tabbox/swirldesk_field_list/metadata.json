@@ -1,0 +1,15 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "SwirlDesk FIELD"
+      }
+    ],
+    "Description": "Dry tactical list-style window switcher for SwirlDesk FIELD",
+    "Id": "swirldesk_field_list",
+    "License": "GPL-2.0-or-later",
+    "Name": "FIELD // Tasks",
+    "Version": "0.9.2"
+  },
+  "KPackageStructure": "KWin/WindowSwitcher"
+}

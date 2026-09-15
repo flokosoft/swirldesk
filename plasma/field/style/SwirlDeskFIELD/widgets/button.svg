@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="238" viewBox="0 0 34 238">
+  <rect id="normal-topleft" x="0" y="0" width="1" height="1" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-top" x="1" y="0" width="32" height="1" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-topright" x="33" y="0" width="1" height="1" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-left" x="0" y="1" width="1" height="32" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-center" x="1" y="1" width="32" height="32" fill="#11140f" fill-opacity="0.98"/>
+  <rect id="normal-right" x="33" y="1" width="1" height="32" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-bottomleft" x="0" y="33" width="1" height="1" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-bottom" x="1" y="33" width="32" height="1" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-bottomright" x="33" y="33" width="1" height="1" fill="#505846" fill-opacity="1"/>
+  <rect id="normal-hint-top-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="normal-hint-right-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="normal-hint-bottom-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="normal-hint-left-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="pressed-topleft" x="0" y="34" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-top" x="1" y="34" width="32" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-topright" x="33" y="34" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-left" x="0" y="35" width="1" height="32" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-center" x="1" y="35" width="32" height="32" fill="#8e7a58" fill-opacity="0.86"/>
+  <rect id="pressed-right" x="33" y="35" width="1" height="32" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-bottomleft" x="0" y="67" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-bottom" x="1" y="67" width="32" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-bottomright" x="33" y="67" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="pressed-hint-top-margin" x="0" y="34" width="1" height="1" fill="none"/>
+  <rect id="pressed-hint-right-margin" x="0" y="34" width="1" height="1" fill="none"/>
+  <rect id="pressed-hint-bottom-margin" x="0" y="34" width="1" height="1" fill="none"/>
+  <rect id="pressed-hint-left-margin" x="0" y="34" width="1" height="1" fill="none"/>
+  <rect id="hover-topleft" x="0" y="68" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-top" x="1" y="68" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-topright" x="33" y="68" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-left" x="0" y="69" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-center" x="1" y="69" width="32" height="32" fill="#181b15" fill-opacity="0.98"/>
+  <rect id="hover-right" x="33" y="69" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-bottomleft" x="0" y="101" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-bottom" x="1" y="101" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-bottomright" x="33" y="101" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="hover-hint-top-margin" x="0" y="68" width="1" height="1" fill="none"/>
+  <rect id="hover-hint-right-margin" x="0" y="68" width="1" height="1" fill="none"/>
+  <rect id="hover-hint-bottom-margin" x="0" y="68" width="1" height="1" fill="none"/>
+  <rect id="hover-hint-left-margin" x="0" y="68" width="1" height="1" fill="none"/>
+  <rect id="focus-topleft" x="0" y="102" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-top" x="1" y="102" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-topright" x="33" y="102" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-left" x="0" y="103" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-center" x="1" y="103" width="32" height="32" fill="#11140f" fill-opacity="0.05"/>
+  <rect id="focus-right" x="33" y="103" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-bottomleft" x="0" y="135" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-bottom" x="1" y="135" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-bottomright" x="33" y="135" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="focus-hint-top-margin" x="0" y="102" width="1" height="1" fill="none"/>
+  <rect id="focus-hint-right-margin" x="0" y="102" width="1" height="1" fill="none"/>
+  <rect id="focus-hint-bottom-margin" x="0" y="102" width="1" height="1" fill="none"/>
+  <rect id="focus-hint-left-margin" x="0" y="102" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-hover-topleft" x="0" y="136" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-top" x="1" y="136" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-topright" x="33" y="136" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-left" x="0" y="137" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-center" x="1" y="137" width="32" height="32" fill="#181b15" fill-opacity="0.9"/>
+  <rect id="toolbutton-hover-right" x="33" y="137" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-bottomleft" x="0" y="169" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-bottom" x="1" y="169" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-bottomright" x="33" y="169" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-hover-hint-top-margin" x="0" y="136" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-hover-hint-right-margin" x="0" y="136" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-hover-hint-bottom-margin" x="0" y="136" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-hover-hint-left-margin" x="0" y="136" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-pressed-topleft" x="0" y="170" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-top" x="1" y="170" width="32" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-topright" x="33" y="170" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-left" x="0" y="171" width="1" height="32" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-center" x="1" y="171" width="32" height="32" fill="#8e7a58" fill-opacity="0.78"/>
+  <rect id="toolbutton-pressed-right" x="33" y="171" width="1" height="32" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-bottomleft" x="0" y="203" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-bottom" x="1" y="203" width="32" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-bottomright" x="33" y="203" width="1" height="1" fill="#b3a06d" fill-opacity="1"/>
+  <rect id="toolbutton-pressed-hint-top-margin" x="0" y="170" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-pressed-hint-right-margin" x="0" y="170" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-pressed-hint-bottom-margin" x="0" y="170" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-pressed-hint-left-margin" x="0" y="170" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-focus-topleft" x="0" y="204" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-top" x="1" y="204" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-topright" x="33" y="204" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-left" x="0" y="205" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-center" x="1" y="205" width="32" height="32" fill="#11140f" fill-opacity="0.04"/>
+  <rect id="toolbutton-focus-right" x="33" y="205" width="1" height="32" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-bottomleft" x="0" y="237" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-bottom" x="1" y="237" width="32" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-bottomright" x="33" y="237" width="1" height="1" fill="#a68a5b" fill-opacity="1"/>
+  <rect id="toolbutton-focus-hint-top-margin" x="0" y="204" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-focus-hint-right-margin" x="0" y="204" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-focus-hint-bottom-margin" x="0" y="204" width="1" height="1" fill="none"/>
+  <rect id="toolbutton-focus-hint-left-margin" x="0" y="204" width="1" height="1" fill="none"/>
+</svg>

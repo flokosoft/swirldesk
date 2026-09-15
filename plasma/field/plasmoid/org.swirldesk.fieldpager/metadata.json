@@ -1,0 +1,21 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "SwirlDesk FIELD"
+      }
+    ],
+    "Category": "Windows and Tasks",
+    "Description": "Compact FIELD virtual desktop rail for Plasma 6",
+    "Icon": "preferences-desktop-virtual",
+    "Id": "org.swirldesk.fieldpager",
+    "License": "GPL-2.0-or-later",
+    "Name": "FIELD // Pager",
+    "Version": "0.9.0"
+  },
+  "KPackageStructure": "Plasma/Applet",
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "X-Plasma-Provides": [
+    "org.kde.plasma.virtualdesktops"
+  ]
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+  <!-- FIELD // generic Plasma dialog / KRunner surface -->
+  <rect id="topleft" x="0" y="0" width="1" height="1" fill="#a68a5b"/>
+  <rect id="top" x="1" y="0" width="32" height="1" fill="#a68a5b"/>
+  <rect id="topright" x="33" y="0" width="1" height="1" fill="#a68a5b"/>
+  <rect id="left" x="0" y="1" width="1" height="32" fill="#505846"/>
+  <rect id="center" x="1" y="1" width="32" height="32" fill="#0b0d0a" fill-opacity="0.985"/>
+  <rect id="right" x="33" y="1" width="1" height="32" fill="#505846"/>
+  <rect id="bottomleft" x="0" y="33" width="1" height="1" fill="#505846"/>
+  <rect id="bottom" x="1" y="33" width="32" height="1" fill="#505846"/>
+  <rect id="bottomright" x="33" y="33" width="1" height="1" fill="#505846"/>
+  <rect id="hint-top-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="hint-left-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="hint-right-margin" x="0" y="0" width="1" height="1" fill="none"/>
+  <rect id="hint-bottom-margin" x="0" y="0" width="1" height="1" fill="none"/>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "SwirlDesk FIELD"
+      }
+    ],
+    "Name": "SwirlDesk FIELD",
+    "Description": "Graphite, Coyote and Khaki Plasma style for SwirlDesk FIELD // KRunner, popups and rail",
+    "Id": "SwirlDeskFIELD",
+    "Version": "0.8",
+    "Category": "",
+    "EnabledByDefault": true,
+    "License": "GPL-3.0-or-later",
+    "Website": ""
+  },
+  "X-Plasma-API": "5.0"
+}

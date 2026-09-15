@@ -1,0 +1,6 @@
+[Greeter]
+WallpaperPlugin=org.kde.image
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=file:///home/floo/.config/swirldesk/wallpapers/SwirlDeskFIELD/field-topo-aor1-ghost-1920x1200.png
+PreviewImage=file:///home/floo/.config/swirldesk/wallpapers/SwirlDeskFIELD/field-topo-aor1-ghost-1920x1200.png

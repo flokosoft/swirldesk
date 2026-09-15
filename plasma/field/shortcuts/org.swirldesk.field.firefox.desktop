@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FIELD // Browser
+Comment=Open Firefox for SwirlDesk FIELD Plasma
+Exec=firefox
+Icon=firefox
+NoDisplay=true
+StartupNotify=true
+X-KDE-GlobalAccel-CommandShortcut=true

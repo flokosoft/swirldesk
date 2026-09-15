@@ -13,6 +13,24 @@ STATE_FILE="$RUNTIME_BASE/swirldesk-field-ntf-${UID}.state"
 LOCK_FILE="$RUNTIME_BASE/swirldesk-field-dunst-${UID}.lock"
 mkdir -p "$CACHE_DIR"
 
+# FIELD dual-session notification routing. Plasma and Dunst both advertise
+# org.freedesktop.Notifications. Pin the canonical user D-Bus activation file
+# to FIELD Dunst before any startup notification can trigger an arbitrary
+# provider. Plasma's session guard switches it back to Plasma on KDE login.
+USER_DBUS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/dbus-1/services"
+CANONICAL_DBUS="$USER_DBUS_DIR/org.freedesktop.Notifications.service"
+DBUS_WRAPPER="$ROOT/scripts/dunst-dbus-activate.sh"
+mkdir -p "$USER_DBUS_DIR"
+if [[ -x "$DBUS_WRAPPER" ]]; then
+    tmp_service="$CANONICAL_DBUS.tmp.$$"
+    cat > "$tmp_service" <<SERVICE
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=$DBUS_WRAPPER
+SERVICE
+    mv -f "$tmp_service" "$CANONICAL_DBUS"
+fi
+
 # Serialize startup/restart requests.
 exec 9>"$LOCK_FILE"
 if command -v flock >/dev/null 2>&1; then
@@ -82,10 +100,9 @@ known_notification_pid() {
     return 1
 }
 
-# Do not deliberately stall the visible login path here. ui-start.sh runs this
-# helper asynchronously, and the ownership/retry loops below already handle
-# a session bus that is still settling or a competing notifier.
-sleep 0.05
+# Let the session bus settle for a moment. If something auto-activated the
+# default Dunst during login, we replace it below with the exact FIELD config.
+sleep 0.35
 
 for daemon in xfce4-notifyd mako swaync notification-daemon dunst; do
     pkill -x "$daemon" 2>/dev/null || true
