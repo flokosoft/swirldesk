@@ -1,0 +1,9 @@
+# Nur vertrauenswürdige lokale Konfigurationsdatei; Shell-Syntax.
+VM=win11
+CONNECTION=qemu:///system
+NETWORK=default
+MAC=52:54:00:f2:67:92
+RDP_USER=flofi
+RDP_DOMAIN=MicrosoftAccount
+WORKSPACE=10
+WAIT_SECONDS=120

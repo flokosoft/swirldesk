@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Windows 11
+GenericName=Virtuelle Maschine
+Comment=Windows 11 über KVM und FreeRDP starten
+Exec=@HOME@/.local/bin/windows11
+Icon=computer
+Terminal=false
+Categories=System;Utility;
+Keywords=Windows;KVM;RDP;VM;
+StartupNotify=false
