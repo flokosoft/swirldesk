@@ -6,7 +6,7 @@ cd "$(dirname "$(readlink -f "$0")")"
 command -v apt-get >/dev/null || exit 1
 printf 'Installiere KVM/FreeRDP/Keyring-Abhängigkeiten (sudo erforderlich) ...\n'
 sudo apt-get update
-sudo apt-get install -y qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients virt-manager dnsmasq-base freerdp3-sdl gnome-keyring libsecret-tools netcat-openbsd libnotify-bin
+sudo apt-get install -y qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients virt-manager dnsmasq-base freerdp3-sdl freerdp3-x11 jd gnome-keyring libsecret-tools netcat-openbsd libnotify-bin
 sudo usermod -aG libvirt,kvm "$USER"
 if command -v systemctl >/dev/null; then
   sudo systemctl enable --now libvirtd.service 2>/dev/null || true
@@ -18,6 +18,8 @@ if [[ ! -f "$HOME/.config/kvm_windows11/config" ]]; then
 fi
 sed "s|@HOME@|$HOME|g" windows11.desktop.in > "$HOME/.local/share/applications/windows11.desktop"
 chmod 644 "$HOME/.local/share/applications/windows11.desktop"
+sed "s|@HOME@|$HOME|g" windows11-Beamer.desktop.in > "$HOME/.local/share/applications/windows11-Beamer.desktop"
+chmod 644 "$HOME/.local/share/applications/windows11-Beamer.desktop"
 if ! secret-tool lookup application win11-kvm credential rdp >/dev/null 2>&1; then
   echo
   echo 'RDP-Passwort jetzt sicher im GNOME Keyring speichern (Eingabe bleibt unsichtbar):'

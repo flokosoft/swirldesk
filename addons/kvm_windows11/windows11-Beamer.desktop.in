@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Windows 11 - Präsentation
+GenericName=Virtuelle Maschine
+Comment=Windows 11 mit mehreren Monitoren über KVM und FreeRDP starten
+Exec=/home/floo/.local/bin/windows11 --presentation
+Icon=computer
+Terminal=false
+Categories=System;Utility;
+Keywords=Windows;KVM;RDP;VM;
+StartupNotify=false
