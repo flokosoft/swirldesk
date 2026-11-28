@@ -1,0 +1,31 @@
+/* MATRIX 0.7 — phosphor / floating data strip */
+@define-color bg #030805;
+@define-color fg #b6e4c4;
+@define-color muted #7ca98a;
+@define-color accent #42ff88;
+@define-color line #1b4530;
+@define-color warn #d8bc70;
+@define-color critical #ed8b7f;
+* { font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace; font-size: 11px; border: 0; border-radius: 0; min-height: 0; }
+window#waybar { background: rgba(3,8,5,0.94); color: @fg; border-bottom: 1px solid @line; }
+#custom-matrix { color: @accent; font-weight: bold; padding: 0 8px; }
+#custom-matrix-profile { color: @muted; font-size: 10px; padding: 0 5px; }
+#window { color: @muted; padding: 0 6px; }
+#workspaces { padding: 0 3px; }
+#workspaces button { min-width: 13px; padding: 0 4px; background: transparent; color: @muted; box-shadow: none; text-shadow: none; }
+#workspaces button.empty { color: #527b60; }
+#workspaces button.active { color: #030805; background: @accent; margin: 6px 1px; padding: 0 5px; font-weight: bold; }
+#workspaces button.urgent { color: @critical; }
+#workspaces button:hover { color: @accent; background: #10251a; }
+#workspaces button.active:hover { color: #030805; background: #8dffb4; }
+#cpu, #memory, #network, #custom-wireguard, #pulseaudio, #custom-battery, #custom-notifications, #tray, #custom-exit { padding: 0 4px; }
+#cpu, #memory { color: @muted; }
+#clock { color: @accent; padding: 0 8px; font-weight: bold; }
+#custom-matrix:hover, #custom-matrix-profile:hover, #cpu:hover, #memory:hover, #custom-exit:hover { color: @accent; background: #10251a; }
+#network.disconnected, #custom-notifications.offline, #custom-battery.critical { color: @critical; }
+#custom-notifications.paused, #pulseaudio.muted, #custom-battery.warning { color: @warn; }
+#custom-wireguard.active, #custom-wireguard.connected, #custom-battery.charging { color: @accent; }
+tooltip { background: #030805; border: 1px solid @line; padding: 7px; }
+tooltip label { color: @fg; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { background: #183523; }

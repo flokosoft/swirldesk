@@ -10,3 +10,16 @@ hypr/monitors-nwg.conf
 
 # lokale Maschinenkonfiguration
 local/
+
+# Runtime state and local data; not part of a release
+/backups/
+/matrix-support/backups/
+/fonts/
+**/__pycache__/
+*.pyc
+*.bak.*
+*.log
+.env
+.env.*
+*.key
+*.pem

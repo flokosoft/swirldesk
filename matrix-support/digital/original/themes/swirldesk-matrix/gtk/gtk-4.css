@@ -1,0 +1,37 @@
+/* SwirlDesk MATRIX // GTK4 v0.5 */
+@define-color matrix_bg #050805;
+@define-color matrix_surface #0c160f;
+@define-color matrix_surface2 #10251a;
+@define-color matrix_text #b4dcc1;
+@define-color matrix_muted #78a58a;
+@define-color matrix_coyote #00b950;
+@define-color matrix_khaki #00ff65;
+
+window, .background { background-color: @matrix_bg; color: @matrix_text; }
+headerbar {
+    background: @matrix_surface;
+    color: @matrix_text;
+    border-bottom: 1px solid alpha(@matrix_coyote, 0.34);
+    box-shadow: none;
+}
+button {
+    background: transparent;
+    color: @matrix_text;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: none;
+}
+button:hover { background: #183523; border-color: alpha(@matrix_coyote, 0.38); }
+button:active, button:checked { background: #143521; border-color: @matrix_coyote; color: @matrix_khaki; }
+entry, searchentry {
+    background: #080f0a;
+    color: @matrix_text;
+    border: 1px solid alpha(@matrix_coyote, 0.34);
+    border-radius: 2px;
+}
+entry:focus, searchentry:focus { border-color: @matrix_coyote; }
+popover, menu { background: @matrix_surface; color: @matrix_text; border: 1px solid alpha(@matrix_coyote, 0.38); }
+selection { background-color: #173b25; color: @matrix_text; }
+.sidebar { background: #0b170f; color: @matrix_muted; }
+scrollbar slider { background-color: #2c6140; border-radius: 1px; min-width: 5px; min-height: 5px; }
+scrollbar slider:hover { background-color: @matrix_coyote; }

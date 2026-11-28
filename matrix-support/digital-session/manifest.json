@@ -1,0 +1,34 @@
+{
+  "themes/swirldesk-matrix/waybar/config": {
+    "old": "60bb65cfdff986e22484bc6c03b2fa0d516eac9eb20c4fe9ed72d72395152ba6",
+    "new": "d28ddefa06844fdc72a391a76151c363e636786c9ef4362bfb880b0adc7b740e"
+  },
+  "matrix-support/digital/payload/themes/swirldesk-matrix/waybar/config": {
+    "old": "60bb65cfdff986e22484bc6c03b2fa0d516eac9eb20c4fe9ed72d72395152ba6",
+    "new": "d28ddefa06844fdc72a391a76151c363e636786c9ef4362bfb880b0adc7b740e"
+  },
+  "themes/swirldesk-matrix/control/matrix_operator.py": {
+    "old": "c479eb1b6c68c5615ed975e98b3949049f43d9287301a4936294f506c2fbc5e3",
+    "new": "61e06db1fc09f7dd733da56edb1e0d91ad5934e9c05b83cb112b4b4e95993c20"
+  },
+  "matrix-support/digital/payload/themes/swirldesk-matrix/control/matrix_operator.py": {
+    "old": "c479eb1b6c68c5615ed975e98b3949049f43d9287301a4936294f506c2fbc5e3",
+    "new": "61e06db1fc09f7dd733da56edb1e0d91ad5934e9c05b83cb112b4b4e95993c20"
+  },
+  "themes/swirldesk-matrix/control/fallback.sh": {
+    "old": "761aa76c23b08e3aef663f9249547405184db3a8eedeef506a64278fe6fbbed9",
+    "new": "6bf68354b37e453f3600368ad785a4d820c8cc1c367941e43609183ea5c9f182"
+  },
+  "matrix-support/digital/payload/themes/swirldesk-matrix/control/fallback.sh": {
+    "old": "761aa76c23b08e3aef663f9249547405184db3a8eedeef506a64278fe6fbbed9",
+    "new": "6bf68354b37e453f3600368ad785a4d820c8cc1c367941e43609183ea5c9f182"
+  },
+  "matrix-support/digital/manifest.json": {
+    "old": "a48220104843d4942c3940566e33ef83274fc6e97cdc9d62ce6a879fd33e93a3",
+    "new": "15a069bb923bd40bdb2f29afa89ad788abb3255a2ebab8575933babb7b068a6c"
+  },
+  "themes/swirldesk-matrix/session/action.sh": {
+    "old": "63540f3b512e2d145f6cae079987ecf06bdbe9a08562f97bc381976fd1bafb2d",
+    "new": "17326d0a2365736b8c5485eb903ce418401e784f56ca2c02a750d9ea412878ec"
+  }
+}

@@ -8,7 +8,7 @@ Im Addon-Verzeichnis `./install.sh` als normaler Benutzer ausführen. Das Skript
 
 ## Voraussetzung / Umfang
 
-Die Windows-11-VM mit Name `win11` und MAC `52:54:00:f2:67:92` ist ein Beispiel aus der bestehenden Einrichtung. Die VM muss vorhanden sein oder separat aus Backup/Installationsmedium eingerichtet werden. Die libvirt-NAT-Netzwerkdefinition `default` muss vorhanden und aktiv sein. Windows 11 Pro muss RDP erlauben, die Firewall TCP 3389 zulassen und eine Passwort-Anmeldung akzeptieren. Ein Microsoft-Account-PIN ist kein RDP-Passwort.
+Die Windows-11-VM mit Name `win11` und MAC `52:54:00:00:00:00` ist ein Beispiel aus der bestehenden Einrichtung. Die VM muss vorhanden sein oder separat aus Backup/Installationsmedium eingerichtet werden. Die libvirt-NAT-Netzwerkdefinition `default` muss vorhanden und aktiv sein. Windows 11 Pro muss RDP erlauben, die Firewall TCP 3389 zulassen und eine Passwort-Anmeldung akzeptieren. Ein Microsoft-Account-PIN ist kein RDP-Passwort.
 
 Die VM-Festplatte, Windows-Installation, Windows-Konto und RDP-Freigabe werden nicht automatisch erstellt oder verändert. SwirlDesk-Hyprland-Regeln (Workspace 10, `bindp`-Shortcuts) sind bereits Teil des Hauptsetups und werden nicht verändert.
 

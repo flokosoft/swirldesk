@@ -1,0 +1,18 @@
+# v0.8.2 compatibility hotfix
+
+Modern Hyprland requires GLSL ES 3.00; this overlay updates only the three shader files, test harness and documentation. Old ES 1.00-only compositor builds are not targeted. Turn CRT off before extraction and reselect a mode after extraction. If an old error overlay remains, turn CRT off and run `hyprctl reload` before selecting again. The shader option is runtime-managed. Do not overwrite any foreign shader.
+
+# MATRIX 0.8.1 TEST — CRT / Phosphor
+
+Baseline: installed, user-confirmed MATRIX 0.8.0 with rain integration enabled. Hyprland only, legacy `hyprctl keyword decoration:screen_shader` interface. Does not install packages or fonts. No persistent compositor settings. No changes to FIELD, Plasma, GTK, digital appearance files, session control or rain renderer. Default OFF.
+
+Install: extract to ~/.config/swirldesk, then `bash matrix-support/enable-crt.sh`. The guarded installer only accepts exact v0.8.0 or v0.8.1 profile files and synchronizes the rain manager's template so its Doctor remains valid. Existing user modifications are not overwritten. The existing Control Center > visual profile and Waybar profile menu now expose CRT / DISPLAY EFFECTS. No change of wallpaper is made by CRT selection.
+
+Modes: off (digital), soft, classic, strong. Static one-sample fragment shaders: scanlines, vignette and slight enhancement of green pixels, no temporal effects, distortion or blur. Actual intensity depends on monitor scale and compositor. Full screen postprocessing applies to composed output, not merely wallpaper; some compositor surfaces or capture paths may differ. No true bloom. The preference lives in state/matrix_crt_mode. It is independent of visual profile and Digital Rain. A small per-Hyprland-session locked worker checks power and active theme every second. If AC is unknown, the shader is not applied. The existing Waybar profile poll restarts the worker after login/return to MATRIX. In battery mode the worker remains but owned shader is removed. Foreign shaders are left untouched; no shader stacking. If a third-party shader becomes active, CRT waits for it to clear. No forcing damage tracking or continuous redraw. GPU cost is not measured. On error the worker reports status, tries to clear its own shader and exits after three failures. If the legacy API is unavailable, activation fails; Lua-only newer Hyprland is not implemented.
+
+Commands (from root):
+- `themes/swirldesk-matrix/visual/crt/ctl.sh classic` (or soft/strong/off)
+- `bash matrix-support/crt-doctor.sh`
+- `bash matrix-support/disable-crt.sh` (restore exact v0.8.0 profile and rain template, preference off; run before removing rain or downgrading). After off, worker may take a second plus IPC time to remove its shader. If a crash leaves it active, set preference off then run `hyprctl reload` in the same session as recovery; this reloads all current Hyprland configuration. Never use a blanket clear if another tool owns the active shader.
+
+Live checks: select soft/classic, test readability in browser and terminal, combine with animated code rain, unplug AC, reconnect, switch FIELD and back, select off, run CRT and rain doctors. Verify performance and no shader persists after theme change. Actual shader compilation in this environment was not verified (libGLESv2 unavailable); legacy interface cross-checked against Hyprland 0.41 example and docs. Six automated test methods for policy, mode persistence, mock IPC/readback, foreign shader preservation, apply/restore and modified-file refusal; five existing rain test methods re-run. Shell syntax passed. No live Hyprland session here.

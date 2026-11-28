@@ -1,0 +1,139 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
+  "modules-left": [
+    "custom/matrix",
+    "custom/matrix-profile",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "network",
+    "custom/wireguard",
+    "pulseaudio",
+    "custom/battery",
+    "custom/notifications",
+    "clock",
+    "tray",
+    "custom/exit"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 18,
+    "separate-outputs": true
+  },
+  "cpu": {
+    "format": "cpu:{usage}%",
+    "interval": 2,
+    "tooltip": true,
+    "tooltip-format": "CPU-Auslastung: {usage}%",
+    "on-click": "bash ~/.config/swirldesk/themes/swirldesk-matrix/control/open.sh",
+    "on-click-right": "kitty --class btop-floating -e btop"
+  },
+  "memory": {
+    "format": "ram:{percentage}%",
+    "interval": 2,
+    "tooltip": true,
+    "tooltip-format": "RAM-Auslastung: {used:0.1f}G / {total:0.1f}G",
+    "on-click": "bash ~/.config/swirldesk/themes/swirldesk-matrix/control/open.sh",
+    "on-click-right": "kitty --class btop-floating -e btop"
+  },
+  "network": {
+    "interval": 2,
+    "format-wifi": "net:{signalStrength}%",
+    "format-ethernet": "net:lan",
+    "format-disconnected": "offline",
+    "tooltip-format": "{ifname}\nIP: {ipaddr}\nDown: {bandwidthDownBits}\nUp: {bandwidthUpBits}",
+    "on-click": "nm-connection-editor"
+  },
+  "custom/wireguard": {
+    "exec": "~/.config/swirldesk/scripts/wg-status.sh",
+    "return-type": "json",
+    "interval": 5,
+    "on-click": "~/.config/swirldesk/scripts/wireguard-toggle.sh"
+  },
+  "pulseaudio": {
+    "format": "vol:{volume}%",
+    "format-muted": "vol:—",
+    "format-icons": {
+      "headphone": "",
+      "headset": "󰋎",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/battery": {
+    "exec": "~/.config/swirldesk/scripts/battery-waybar.sh",
+    "return-type": "json",
+    "interval": 10,
+    "tooltip": true
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<big>{:%A, %d. %B %Y}</big>"
+  },
+  "custom/notifications": {
+    "exec": "~/.config/swirldesk/scripts/notification-status.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "~/.config/swirldesk/scripts/toggle-notifications.sh",
+    "tooltip": true
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 4,
+    "icons": {
+      "signal": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-chat.svg",
+      "Signal": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-chat.svg",
+      "signal-desktop": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-chat.svg",
+      "org.signal.Signal": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-chat.svg",
+      "bitwarden": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-vault.svg",
+      "Bitwarden": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-vault.svg",
+      "com.bitwarden.desktop": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-vault.svg",
+      "nextcloud": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-cloud.svg",
+      "Nextcloud": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-cloud.svg",
+      "com.nextcloud.desktopclient.nextcloud": "$HOME/.config/swirldesk/themes/swirldesk-matrix/icons/SwirlDesk-MATRIX/scalable/apps/matrix-cloud.svg"
+    }
+  },
+  "custom/exit": {
+    "format": "⏻",
+    "tooltip": true,
+    "on-click": "~/.config/swirldesk/themes/swirldesk-matrix/session/open.sh",
+    "tooltip-format": "SESSION // Power control"
+  },
+  "custom/matrix": {
+    "format": "the matrix ▏",
+    "tooltip": true,
+    "tooltip-format": "MATRIX · Control Center\nLeft: console · Right: themes · Middle: system report",
+    "on-click": "bash ~/.config/swirldesk/themes/swirldesk-matrix/control/open.sh",
+    "on-click-right": "~/.config/swirldesk/scripts/theme-switcher.sh",
+    "on-click-middle": "~/.config/swirldesk/themes/swirldesk-matrix/session/info.sh"
+  },
+  "custom/matrix-profile": {
+    "exec": "~/.config/swirldesk/themes/swirldesk-matrix/session/digital/profile-status.sh",
+    "interval": 3,
+    "format": "{}",
+    "tooltip": true,
+    "tooltip-format": "MATRIX // Visual profile\nClick: select profile",
+    "on-click": "~/.config/swirldesk/themes/swirldesk-matrix/visual/profile.sh"
+  },
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-bottom": 0
+}

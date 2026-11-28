@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+ROOT="$HOME/.config/swirldesk"
+if [[ $(cat "$ROOT/state/current_theme_name" 2>/dev/null) == swirldesk-matrix && -n ${HYPRLAND_INSTANCE_SIGNATURE:-} ]]; then
+    exec "$ROOT/themes/swirldesk-matrix/session/fetch.sh" "$@"
+fi
+exec fastfetch --config "$HOME/.config/swirldesk/fastfetch/config.jsonc" "$@"

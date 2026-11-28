@@ -25,6 +25,7 @@ choice=$(printf "%s\n" "${themes[@]}" | fuzzel \
 [ -z "$choice" ] && exit 0
 
 selected="$THEMES_DIR/$choice"
+previous_theme="$(cat "$STATE_DIR/current_theme_name" 2>/dev/null || true)"
 
 if [ ! -d "$selected" ]; then
     notify-send "SwirlDesk Theme" "Theme nicht gefunden: $choice"
@@ -106,6 +107,17 @@ elif [ -L "$HOME/.config/gtk-4.0/gtk.css" ] && readlink -f "$HOME/.config/gtk-4.
     rm -f "$HOME/.config/gtk-4.0/gtk.css"
 fi
 
+# MATRIX icon integration: synchronize GTK's GSettings only for MATRIX transitions.
+# Other themes retain their pre-existing behavior outside those transitions.
+if [ "$choice" = "swirldesk-matrix" ] || [ "$previous_theme" = "swirldesk-matrix" ]; then
+    if [ -f "$selected/gtk/settings.ini" ] && command -v gsettings >/dev/null 2>&1; then
+        matrix_icon_theme="$(sed -n 's/^gtk-icon-theme-name=//p' "$selected/gtk/settings.ini" | head -n1)"
+        if [ -n "$matrix_icon_theme" ]; then
+            gsettings set org.gnome.desktop.interface icon-theme "$matrix_icon_theme" 2>/dev/null || true
+        fi
+    fi
+fi
+
 # Starship prompt (theme-specific). When leaving a theme that owns the symlink,
 # remove it so Starship falls back to its normal/default configuration.
 if [ -f "$selected/starship/starship.toml" ]; then
@@ -113,6 +125,15 @@ if [ -f "$selected/starship/starship.toml" ]; then
     ln -sfn "$selected/starship/starship.toml" "$HOME/.config/starship.toml"
 elif [ -L "$HOME/.config/starship.toml" ] && readlink -f "$HOME/.config/starship.toml" | grep -q '/swirldesk/themes/'; then
     rm -f "$HOME/.config/starship.toml"
+fi
+
+# MATRIX wallpaper transition: keep the pre-MATRIX wallpaper for themes without a default.
+if [ "$choice" = "swirldesk-matrix" ] && [ "$previous_theme" != "swirldesk-matrix" ]; then
+    if [ -s "$STATE_DIR/current_wallpaper" ]; then
+        cp "$STATE_DIR/current_wallpaper" "$STATE_DIR/matrix_previous_wallpaper"
+    else
+        rm -f "$STATE_DIR/matrix_previous_wallpaper"
+    fi
 fi
 
 # Theme wallpaper (optional)
@@ -126,10 +147,27 @@ if [ -f "$selected/theme.conf" ]; then
         wallpaper="$HOME/.config/swirldesk/$THEME_WALLPAPER"
         wallpaper_mode="${THEME_WALLPAPER_MODE:-fill}"
 
-        if [ -f "$wallpaper" ] && command -v swaybg >/dev/null 2>&1; then
+        if [ "$choice" = "swirldesk-matrix" ] && [ -x "$selected/visual/profile.sh" ]; then
+            # Restore the saved MATRIX profile rather than its default image.
+            if ! "$selected/visual/profile.sh" --quiet --restore; then
+                notify-send "MATRIX // VISUAL" "Profile restore failed; select VIS in Waybar" || true
+            fi
+        elif [ -f "$wallpaper" ] && command -v swaybg >/dev/null 2>&1; then
             pkill swaybg 2>/dev/null || true
             swaybg -i "$wallpaper" -m "$wallpaper_mode" &
             echo "$wallpaper" > "$STATE_DIR/current_wallpaper"
+        fi
+    fi
+fi
+
+# When leaving MATRIX for a theme without its own wallpaper, restore the previous image.
+if [ "$previous_theme" = "swirldesk-matrix" ] && [ "$choice" != "swirldesk-matrix" ]; then
+    if [ -z "${THEME_WALLPAPER:-}" ] && [ -r "$STATE_DIR/matrix_previous_wallpaper" ]; then
+        old_wallpaper="$(cat "$STATE_DIR/matrix_previous_wallpaper")"
+        if [ -f "$old_wallpaper" ] && command -v swaybg >/dev/null 2>&1; then
+            pkill swaybg 2>/dev/null || true
+            swaybg -i "$old_wallpaper" -m fill &
+            printf '%s\n' "$old_wallpaper" > "$STATE_DIR/current_wallpaper"
         fi
     fi
 fi

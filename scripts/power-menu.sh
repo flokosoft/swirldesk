@@ -3,6 +3,10 @@ set -u
 ROOT="$HOME/.config/swirldesk"
 ACTIVE=$(cat "$ROOT/state/current_theme_name" 2>/dev/null || true)
 
+if [[ "$ACTIVE" == swirldesk-matrix && -n ${HYPRLAND_INSTANCE_SIGNATURE:-} ]]; then
+    exec "$ROOT/themes/swirldesk-matrix/session/open.sh"
+fi
+
 # FIELD gets the native panel. Other SwirlDesk themes keep the compact Fuzzel
 # power menu, so this remains reversible and does not alter the shared UX.
 if [ "$ACTIVE" = "swirldesk-field" ] && python3 - <<'PY' >/dev/null 2>&1

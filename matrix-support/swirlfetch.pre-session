@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec fastfetch --config "$HOME/.config/swirldesk/fastfetch/config.jsonc" "$@"

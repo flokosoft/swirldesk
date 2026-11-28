@@ -1,0 +1,18 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "SwirlDesk MATRIX"
+      }
+    ],
+    "Name": "SwirlDesk MATRIX",
+    "Description": "Dark operator rail, green accents and Plasma surfaces",
+    "Id": "SwirlDeskMATRIX",
+    "Version": "0.6.0",
+    "Category": "",
+    "EnabledByDefault": true,
+    "License": "GPL-3.0-or-later",
+    "Website": ""
+  },
+  "X-Plasma-API": "5.0"
+}

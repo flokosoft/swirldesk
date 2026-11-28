@@ -1,0 +1,82 @@
+{
+  "themes/swirldesk-matrix/waybar/config": {
+    "old": "11457b7844321ef8a1e1743ae7cfab40cf4bfbcc3075b339bb9ee1dd6cc0f2ca",
+    "new": "d28ddefa06844fdc72a391a76151c363e636786c9ef4362bfb880b0adc7b740e",
+    "previous_session": "60bb65cfdff986e22484bc6c03b2fa0d516eac9eb20c4fe9ed72d72395152ba6"
+  },
+  "themes/swirldesk-matrix/waybar/style.css": {
+    "old": "45afb333ab5e838b7e59670ffb7e454dbae73c8838cca7e897683f0391297437",
+    "new": "5b7aa37597930a010357d670d69f976bf4c3614182d97d0680cd8eef17927d84"
+  },
+  "themes/swirldesk-matrix/hypr/appearance.conf": {
+    "old": "3444b9e820e94593f81426e92e21ab01914dd02fbcab5c7d68ae1aa1a5a88b58",
+    "new": "c12575769bc0a482946600755c79c3590f9593547324afa4513b8bb41717a344"
+  },
+  "themes/swirldesk-matrix/hypr/colors.conf": {
+    "old": "0eeaa8c6b3e2a393070fccb61adf9f170f554002301258fc2aab421f17086fe6",
+    "new": "f76c975893aeee7e782863f5441843a1bc6408fcda5fdf87b53492a287950e34"
+  },
+  "themes/swirldesk-matrix/kitty/kitty.conf": {
+    "old": "f4af779b09331623f7b7fdc64b5cd099baa5c0e3284f71e06388d26324d38c8e",
+    "new": "e3582507e868a43c738a9e2685f69059c2ae09d9e82d45296664b1976806c452"
+  },
+  "themes/swirldesk-matrix/starship/starship.toml": {
+    "old": "cc5b0009678db20ee681fa793a22ff7ab53b5e8acee5a3aba888a18b4da07f4d",
+    "new": "e5f180d7c01d3007d4391ed1a7e1635ef93ea252009a98c693f9063bbabe9558"
+  },
+  "themes/swirldesk-matrix/fuzzel/fuzzel.ini": {
+    "old": "e176028cae1dd4eb71522bbf9918ffa2218bbab8359df5b0c12023b8ef83f4b0",
+    "new": "d0bcab8c57b9bd5f063e738b3dbf3ca153d252bc72676043d43db1325c2e46ff"
+  },
+  "themes/swirldesk-matrix/dunst/dunstrc": {
+    "old": "0011d0f8abf0d852e22aab08c62ef8d65ea040f5f9f895e9c03a03c9ef0aa2f6",
+    "new": "634bbc4f4a7389afc565e4697e2e4e3232ce3e13296dd90c92620076c37fc166"
+  },
+  "themes/swirldesk-matrix/control/matrix_operator.py": {
+    "old": "afafb028a2f5c81f66fa8c0c71adb39d5a6fbe048d87e1f5391b0be6bd01dedd",
+    "new": "61e06db1fc09f7dd733da56edb1e0d91ad5934e9c05b83cb112b4b4e95993c20",
+    "previous": "3277c83752de1b09fa1cae31da1a29f6a97ebd6e7f241d5841ae7b4b7d26dab5",
+    "previous_session": "c479eb1b6c68c5615ed975e98b3949049f43d9287301a4936294f506c2fbc5e3"
+  },
+  "themes/swirldesk-matrix/control/operator.css": {
+    "old": "a052adae231b1deef2af4c660a04966424b379c3312db31af3dcfdf385760a51",
+    "new": "36dd367553c13c77e0fa3d3f7b0e6948a3df67dee482ed2a88af203113bc1592"
+  },
+  "themes/swirldesk-matrix/session/power.py": {
+    "old": "b1104b2adb91abd18620ef65cb32c22434dc5f5cc6003d3281862e450b348cf7",
+    "new": "0411ecc0ef7f12d4a9c360db805a0c9f682b853abc3d842eea3b8f666e08e40c"
+  },
+  "themes/swirldesk-matrix/control/fallback.sh": {
+    "old": "852293ca9a7d381f8a58ba4e261aa64940260d3f672926a65c830d07974d7fcf",
+    "new": "6bf68354b37e453f3600368ad785a4d820c8cc1c367941e43609183ea5c9f182",
+    "previous_session": "761aa76c23b08e3aef663f9249547405184db3a8eedeef506a64278fe6fbbed9"
+  },
+  "themes/swirldesk-matrix/session/fallback.sh": {
+    "old": "8dee418347d9de7fb87ce7d35a173d30bec8e82ec34bb5e5c49316bdc335e52d",
+    "new": "8a8ce55124316a19cc4941dbed281bb6a91e10b80fc1a51adf0091c2335d4020"
+  },
+  "themes/swirldesk-matrix/hyprlock/hyprlock.conf": {
+    "old": "230a99cc34b330515a6e93f08f5f1030824cc5751141eeab8351b2aae46cf844",
+    "new": "48caa7899134259b61881680d57c8246ba3b91a9c4510bab7cfacc195bd15e31"
+  },
+  "themes/swirldesk-matrix/session/fastfetch.jsonc": {
+    "old": "11335269dff9e4e695dc1b82adca86a9eb37337fb911d522ee74bbd0d1bd4533",
+    "new": "2e2be4a060f88803896ba94308e7980f15da9a0934b0652312628eb646390520"
+  },
+  "themes/swirldesk-matrix/session/logo.txt": {
+    "old": "4f9ae2aac55581b6b8834d3ea693d13d5dcc4f52e487a4040d6d7bdbcb1a64e5",
+    "new": "4bb5ad2a643f691935276d52c041d25f05dbdc08b64b0b6125ec401d3c5c4a07"
+  },
+  "themes/swirldesk-matrix/gtk/gtk-3.css": {
+    "old": "4f47f176ad22798d7f08d927581d06400ce0c3fc17873dd901630fc57c83a8d1",
+    "new": "f0c3df3fa3fa413f480ebf193be0baf2d8785d09b084dfb8a2b0ad6650e4bad1"
+  },
+  "themes/swirldesk-matrix/gtk/gtk-4.css": {
+    "old": "5f6ab9b543e200bd97cd05245c44f871ab2c281336ad9e86cd581cc1b3e6668a",
+    "new": "3d1d84301489ef3faa7d0bd478ace7c9f695d95da8702532ba38907efd6d2f60"
+  },
+  "themes/swirldesk-matrix/theme.conf": {
+    "old": "34bb57139ecc150c6ec2c1086891c40657b75139a087a043175cab4502f9e3b4",
+    "new": "c2f396b63154ea00a0574afe1a22baa7c3dfff412e26505f667fc915112880c1"
+  }
+}

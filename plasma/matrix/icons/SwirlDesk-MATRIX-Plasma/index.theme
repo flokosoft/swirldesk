@@ -1,0 +1,40 @@
+[Icon Theme]
+Name=SwirlDesk MATRIX Plasma
+Comment=Matrix Operator green line icon overlay
+Inherits=breeze-dark,breeze,Papirus-Dark,Adwaita,hicolor
+Directories=scalable/apps,scalable/places,scalable/devices,scalable/mimetypes,scalable/status
+
+[scalable/apps]
+Size=48
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Applications
+
+[scalable/places]
+Size=48
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Places
+
+[scalable/devices]
+Size=48
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Devices
+
+[scalable/mimetypes]
+Size=48
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=MimeTypes
+
+[scalable/status]
+Size=48
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Status

@@ -1,0 +1,16 @@
+/* Digital console — no boxed tactical tiles. */
+window.matrix { background: #030805; color: #b6e4c4; }
+.matrix * { font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace; font-size: 11pt; color: #b6e4c4; }
+.matrix .header { background: transparent; border: 0; border-bottom: 1px solid #297947; padding: 10px 4px; }
+.matrix .headline { color: #42ff88; font-size: 19pt; font-weight: normal; }
+.matrix .muted { color: #7ca98a; font-size: 9pt; }
+.matrix .section { background: transparent; border: 0; border-bottom: 1px solid #1b4530; padding: 10px 4px; }
+.matrix .section-title { color: #42ff88; font-size: 11pt; font-weight: normal; }
+.matrix .value { color: #b6e4c4; font-weight: normal; }
+.matrix .warning { color: #d8bc70; }
+.matrix button { background: #08170e; background-image: none; border: 1px solid transparent; border-radius: 4px; padding: 8px; box-shadow: none; text-shadow: none; }
+.matrix button:hover, .matrix button:focus { background: #123921; border-color: #42ff88; }
+.matrix button:disabled { opacity: .45; }
+.matrix progressbar trough { background: #10251a; min-height: 3px; border: 0; border-radius: 0; }
+.matrix progressbar progress { background: #42ff88; min-height: 3px; border: 0; border-radius: 0; }
+.matrix progressbar.warning progress { background: #d8bc70; }

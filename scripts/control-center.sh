@@ -8,4 +8,7 @@ THEME="$(cat "$ROOT/state/current_theme_name" 2>/dev/null || true)"
 if [ "$THEME" = "swirldesk-field" ]; then
     exec "$ROOT/scripts/field-control-toggle.sh"
 fi
+if [ "$THEME" = "swirldesk-matrix" ]; then
+    exec bash "$ROOT/themes/swirldesk-matrix/control/open.sh"
+fi
 exec "$ROOT/scripts/control-center-fallback.sh"

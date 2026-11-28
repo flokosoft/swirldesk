@@ -1,0 +1,204 @@
+/* SwirlDesk MATRIX // GTK3 v0.5
+ * Operator interface: flat, low-noise, green hierarchy.
+ */
+@define-color matrix_bg #050805;
+@define-color matrix_surface #0c160f;
+@define-color matrix_surface2 #10251a;
+@define-color matrix_surface3 #183523;
+@define-color matrix_text #b4dcc1;
+@define-color matrix_muted #78a58a;
+@define-color matrix_coyote #00b950;
+@define-color matrix_khaki #00ff65;
+@define-color matrix_olive #38734e;
+@define-color matrix_ranger #254b33;
+@define-color matrix_warning #d8bc70;
+@define-color matrix_red #d76e64;
+
+@define-color theme_bg_color @matrix_bg;
+@define-color theme_fg_color @matrix_text;
+@define-color theme_base_color @matrix_surface;
+@define-color theme_text_color @matrix_text;
+@define-color theme_selected_bg_color #173b25;
+@define-color theme_selected_fg_color @matrix_text;
+@define-color insensitive_bg_color #080e0a;
+@define-color insensitive_fg_color #577764;
+
+window,
+.background {
+    background-color: @matrix_bg;
+    color: @matrix_text;
+}
+
+headerbar,
+.titlebar,
+toolbar {
+    background-image: none;
+    background-color: @matrix_surface;
+    color: @matrix_text;
+    border: 0;
+    border-bottom: 1px solid alpha(@matrix_coyote, 0.34);
+    box-shadow: none;
+}
+
+headerbar,
+.titlebar { min-height: 30px; }
+toolbar { padding: 3px 5px; }
+
+headerbar button,
+.titlebar button,
+toolbar button,
+button {
+    background-image: none;
+    background-color: transparent;
+    color: @matrix_text;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: none;
+    min-height: 24px;
+}
+
+button:hover,
+toolbar button:hover {
+    background-color: @matrix_surface3;
+    border-color: alpha(@matrix_coyote, 0.38);
+}
+
+button:checked,
+button:active {
+    background-color: #143521;
+    border-color: alpha(@matrix_coyote, 0.72);
+    color: @matrix_khaki;
+}
+
+entry,
+searchentry {
+    background-color: #080f0a;
+    color: @matrix_text;
+    border: 1px solid alpha(@matrix_coyote, 0.34);
+    border-radius: 2px;
+    box-shadow: none;
+    min-height: 26px;
+}
+
+entry:focus,
+searchentry:focus {
+    border-color: @matrix_coyote;
+    box-shadow: inset 2px 0 alpha(@matrix_khaki, 0.42);
+}
+
+/* Thunar location/path buttons: compact instrument-strip feel. */
+.path-bar button,
+.path-bar .button {
+    background-color: #080f0a;
+    color: @matrix_muted;
+    border-color: alpha(@matrix_coyote, 0.22);
+    border-radius: 1px;
+    padding: 2px 6px;
+}
+.path-bar button:hover,
+.path-bar .button:hover {
+    color: @matrix_khaki;
+    border-color: alpha(@matrix_coyote, 0.55);
+}
+
+menu,
+.menu,
+popover,
+.context-menu {
+    background-color: @matrix_surface;
+    color: @matrix_text;
+    border: 1px solid alpha(@matrix_coyote, 0.38);
+    border-radius: 1px;
+}
+
+menuitem,
+modelbutton { min-height: 24px; }
+menuitem:hover,
+modelbutton:hover {
+    background-color: #143521;
+    color: @matrix_khaki;
+}
+
+.view,
+treeview,
+iconview {
+    background-color: @matrix_bg;
+    color: @matrix_text;
+}
+
+.view:selected,
+treeview:selected,
+iconview:selected {
+    background-color: #173b25;
+    color: @matrix_text;
+}
+
+.view:hover,
+treeview:hover {
+    background-color: alpha(@matrix_coyote, 0.07);
+}
+
+.sidebar,
+.sidebar .view,
+placessidebar,
+placessidebar viewport {
+    background-color: #0b170f;
+    color: @matrix_muted;
+}
+
+.sidebar row,
+placessidebar row { min-height: 29px; }
+.sidebar .view:selected,
+.sidebar row:selected,
+placessidebar row:selected {
+    background-color: #143521;
+    color: @matrix_khaki;
+    border-left: 2px solid @matrix_coyote;
+}
+
+notebook > header {
+    background-color: #080f0a;
+    border-bottom: 1px solid alpha(@matrix_coyote, 0.30);
+}
+notebook > header tab {
+    background-color: transparent;
+    color: @matrix_muted;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 4px 10px;
+}
+notebook > header tab:checked {
+    color: @matrix_khaki;
+    border-bottom-color: @matrix_coyote;
+}
+
+statusbar {
+    background-color: #080f0a;
+    color: @matrix_muted;
+    border-top: 1px solid alpha(@matrix_coyote, 0.22);
+    padding: 2px 6px;
+}
+
+scrollbar {
+    background-color: transparent;
+}
+scrollbar slider {
+    background-color: #2c6140;
+    border-radius: 1px;
+    min-width: 5px;
+    min-height: 5px;
+}
+scrollbar slider:hover { background-color: @matrix_coyote; }
+
+separator {
+    background-color: alpha(@matrix_coyote, 0.20);
+    min-width: 1px;
+    min-height: 1px;
+}
+
+tooltip {
+    background-color: @matrix_surface;
+    color: @matrix_text;
+    border: 1px solid alpha(@matrix_coyote, 0.55);
+    border-radius: 0;
+}

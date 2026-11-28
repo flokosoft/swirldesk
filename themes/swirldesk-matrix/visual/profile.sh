@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# MATRIX visual profiles; optional rain layer above unchanged static swaybg.
+set -euo pipefail
+ROOT="$HOME/.config/swirldesk"
+T="$ROOT/themes/swirldesk-matrix"
+STATE="$ROOT/state"
+PREF="$STATE/matrix_visual_profile"
+CURRENT="$STATE/current_wallpaper"
+RAIN="$T/visual/rain/ctl.sh"
+CRT="$T/visual/crt/ctl.sh"
+current() {
+    local p
+    p=$(cat "$PREF" 2>/dev/null || true)
+    case "$p" in clean|code-rain|construct) printf '%s\n' "$p";; *) printf 'code-rain\n';; esac
+}
+wallpaper() {
+    case "$1" in
+        clean) printf '%s\n' "$T/wallpapers/matrix-clean.png";;
+        code-rain) printf '%s\n' "$T/wallpapers/matrix-code.png";;
+        construct) printf '%s\n' "$T/wallpapers/matrix-construct.png";;
+        *) return 2;;
+    esac
+}
+label() {
+    case "$1" in clean) echo CLEAN;; code-rain) echo 'CODE RAIN';; construct) echo CONSTRUCT;; esac
+}
+active() {
+    [[ $(cat "$STATE/current_theme_name" 2>/dev/null || true) == swirldesk-matrix && $(readlink -f "$STATE/current_theme" 2>/dev/null || true) == $(readlink -f "$T") ]]
+}
+message() { if command -v notify-send >/dev/null; then notify-send 'MATRIX // VISUAL' "$1" || true; fi; }
+usage() { echo 'Usage: profile.sh [--current | --status | --restore | --apply clean|code-rain|construct | --quiet --apply NAME]'; }
+quiet=0; profile=''; mode=menu; rain_choice=''
+while (($#)); do
+    case "$1" in
+        --current) current; exit 0;;
+        --status)
+            if [[ -x "$CRT" && $(cat "$STATE/matrix_crt_mode" 2>/dev/null || true) =~ ^(soft|classic|strong)$ ]] && active; then "$CRT" kick >/dev/null 2>&1 || true; fi
+            if ! active; then echo INACTIVE
+            elif [[ $(cat "$CURRENT" 2>/dev/null || true) == "$(wallpaper "$(current)")" ]]; then
+                label "$(current)"
+                # Waybar polls this status, including after login; opt-in only.
+                if [[ $(current) == code-rain && $(cat "$STATE/matrix_rain_enabled" 2>/dev/null || true) == on && -x "$RAIN" ]]; then "$RAIN" kick >/dev/null 2>&1 || true; fi
+            else echo CUSTOM; fi
+            exit 0;;
+        --quiet) quiet=1; shift;;
+        --restore) mode=restore; shift;;
+        --apply) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; profile=$2; mode=apply; shift 2;;
+        -h|--help) usage; exit 0;;
+        *) usage >&2; exit 2;;
+    esac
+done
+if ! active; then echo 'MATRIX is not active; no wallpaper changed.' >&2; ((quiet)) || message 'Activate MATRIX first'; exit 1; fi
+if [[ "$mode" == menu ]]; then
+    command -v fuzzel >/dev/null || { echo 'fuzzel unavailable' >&2; exit 1; }
+    choice=$(printf '%s\n' 'CLEAN     // DARK MINIMAL' 'CODE RAIN // DIGITAL STREAM' 'CODE RAIN LIVE // ANIMATION (AC ONLY)' 'CONSTRUCT // SOFT SPACE' 'CRT // DISPLAY EFFECTS' | fuzzel --dmenu --prompt "VISUAL [$(current)] // " --width 52 --lines 5 --font 'JetBrainsMono Nerd Font:size=11') || exit 0
+    case "$choice" in 'CRT // DISPLAY EFFECTS') exec "$CRT" menu;; CLEAN*) profile=clean;; 'CODE RAIN LIVE'*) profile=code-rain; rain_choice=on;; 'CODE RAIN'*) profile=code-rain; rain_choice=off;; CONSTRUCT*) profile=construct;; *) exit 0;; esac
+elif [[ "$mode" == restore ]]; then profile=$(current); fi
+file=$(wallpaper "$profile") || { echo 'Invalid MATRIX visual profile' >&2; exit 2; }
+[[ -s "$file" ]] || { echo "Missing wallpaper: $file" >&2; exit 1; }
+command -v swaybg >/dev/null || { echo 'swaybg unavailable' >&2; exit 1; }
+[[ -n ${WAYLAND_DISPLAY:-} ]] || { echo 'No Wayland session; no wallpaper changed' >&2; exit 1; }
+mkdir -p "$STATE"
+# Serialize rapid repeated profile requests (also used by theme switcher).
+exec 9>"$STATE/matrix_visual.lock"
+flock -x 9
+active || { echo 'MATRIX is no longer active' >&2; exit 1; }
+old=$(cat "$CURRENT" 2>/dev/null || true)
+# SwirlDesk uses a single swaybg for all outputs. Follow that convention.
+pkill -x swaybg 2>/dev/null || true
+swaybg -i "$file" -m fill </dev/null >/dev/null 2>&1 9>&- &
+pid=$!
+sleep 0.25
+if ! kill -0 "$pid" 2>/dev/null; then
+    if [[ -f "$old" ]]; then swaybg -i "$old" -m fill </dev/null >/dev/null 2>&1 9>&- & fi
+    echo 'swaybg exited immediately; profile not saved.' >&2
+    ((quiet)) || message 'Wallpaper failed; previous image requested'
+    exit 1
+fi
+# Same cache the original SwirlDesk startup uses; atomic individual files.
+for entry in current_wallpaper matrix_visual_profile; do
+    tmp=$(mktemp "$STATE/.matrix-visual.XXXXXX")
+    if [[ "$entry" == current_wallpaper ]]; then printf '%s\n' "$file" > "$tmp"; else printf '%s\n' "$profile" > "$tmp"; fi
+    mv -f "$tmp" "$STATE/$entry"
+done
+if [[ -x "$RAIN" ]]; then
+    if [[ -n "$rain_choice" ]]; then "$RAIN" "$rain_choice" 9>&- || true
+    elif [[ "$profile" == code-rain ]]; then "$RAIN" kick 9>&- || true; fi
+fi
+((quiet)) || message "$(label "$profile") // ACTIVE"
+printf 'MATRIX // %s\n' "$(label "$profile")"

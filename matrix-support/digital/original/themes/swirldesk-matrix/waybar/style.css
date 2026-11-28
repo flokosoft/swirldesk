@@ -1,0 +1,32 @@
+@define-color bg #050805;
+@define-color surface #0c160f;
+@define-color line #254b33;
+@define-color fg #b4dcc1;
+@define-color muted #78a58a;
+@define-color accent #00ff65;
+@define-color code #00b950;
+@define-color warn #d8bc70;
+@define-color critical #d76e64;
+* { font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace; font-size: 11px; border: none; border-radius: 0; min-height: 0; }
+window#waybar { background: @bg; color: @fg; border-bottom: 1px solid @line; }
+#custom-matrix { color: @accent; font-weight: bold; letter-spacing: 1px; background: @surface; padding: 0 12px; border-right: 1px solid @line; }
+#workspaces { padding: 0 4px; }
+#workspaces button { color: @muted; padding: 0 6px; border-bottom: 2px solid transparent; background: transparent; }
+#workspaces button.active { color: @accent; background: #10251a; border-bottom-color: @accent; font-weight: bold; }
+#workspaces button.empty { color: #527b60; }
+#workspaces button.urgent { color: @critical; border-bottom-color: @critical; }
+#workspaces button:hover { color: @accent; background: @surface; box-shadow: none; }
+#window { color: @muted; padding: 0 10px; }
+#cpu, #memory, #network, #custom-wireguard, #pulseaudio, #custom-battery, #custom-notifications, #clock, #tray, #custom-exit { padding: 0 7px; border-left: 1px solid @line; }
+#network, #clock { color: @accent; }
+#custom-exit { color: @muted; padding: 0 10px; }
+#network.disconnected, #custom-notifications.offline, #custom-battery.critical { color: @critical; }
+#custom-notifications.paused, #pulseaudio.muted, #custom-battery.warning { color: @warn; }
+#custom-wireguard.active, #custom-wireguard.connected, #custom-battery.charging { color: @accent; }
+tooltip { background: @surface; border: 1px solid @line; padding: 8px; }
+tooltip label { color: @fg; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { background: #183523; }
+
+#custom-matrix-profile { color: @muted; padding: 0 9px; border-right: 1px solid @line; }
+#custom-matrix-profile:hover { color: @accent; background: @surface; }

@@ -1,0 +1,59 @@
+# SwirlDesk MATRIX // Starship
+# Compact operator-terminal prompt. No decorative powerline glyph dependency.
+add_newline = false
+command_timeout = 800
+
+format = "${custom.matrix}$username$hostname$directory$git_branch$git_status$cmd_duration$line_break$character"
+
+[custom.matrix]
+command = "printf MATRIX"
+when = "true"
+format = "[ $output ](bold fg:#050805 bg:#00b950) "
+
+[username]
+show_always = true
+style_user = "bold #00ff65"
+style_root = "bold #d76e64"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "#78a58a"
+format = "[@$hostname]($style) "
+
+[directory]
+style = "bold #b4dcc1"
+truncation_length = 4
+truncate_to_repo = false
+read_only = " RO"
+read_only_style = "#d8bc70"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = "GIT "
+style = "#58ba80"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "#d8bc70"
+format = "[$all_status$ahead_behind]($style) "
+conflicted = "!${count} "
+ahead = "+${count} "
+behind = "-${count} "
+diverged = "+${ahead_count}/-${behind_count} "
+untracked = "?${count} "
+stashed = "S${count} "
+modified = "M${count} "
+staged = "A${count} "
+renamed = "R${count} "
+deleted = "D${count} "
+
+[cmd_duration]
+min_time = 1500
+style = "#78a58a"
+format = "[T+$duration]($style) "
+
+[character]
+success_symbol = "[›](bold #00ff65) "
+error_symbol = "[›](bold #d76e64) "
+vimcmd_symbol = "[‹](bold #38734e) "

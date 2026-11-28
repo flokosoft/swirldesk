@@ -1,0 +1,21 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "SwirlDesk MATRIX"
+      }
+    ],
+    "Category": "Windows and Tasks",
+    "Description": "SwirlDesk MATRIX panel widget",
+    "Icon": "preferences-desktop-virtual",
+    "Id": "org.swirldesk.matrixpager",
+    "License": "GPL-2.0-or-later",
+    "Name": "MATRIX Workspace Rail",
+    "Version": "0.6.0"
+  },
+  "KPackageStructure": "Plasma/Applet",
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "X-Plasma-Provides": [
+    "org.kde.plasma.virtualdesktops"
+  ]
+}

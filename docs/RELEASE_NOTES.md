@@ -1,0 +1,5 @@
+# SwirlDesk v1.0.0 — release notes
+
+First consolidated SwirlDesk master baseline: Debian, Graphite, FIELD and MATRIX, with optional Plasma editions for FIELD and MATRIX. All historical MATRIX integrations through 0.9.1 and FIELD Plasma 0.9.3.7 are pre-applied. One installer for fresh/upgrade; protected local configuration, known historical signatures, dry-run, backup journal and RC2 FIELD alias correction. New `swirldesk-doctor` inventories installation without making changes. Source packages deliberately omit bundled fonts, credentials, runtime data and Git history.
+
+RC2 dry-run and real upgrade were reported successful on ThinkPad T14. This final release adds documentation/inventory tooling only, not desktop or installer behavior changes. Fresh real Debian/APT install, full new Plasma activation and final 1.0.0 live upgrade remain pending. Hyprland >=0.53 configuration expected; Plasma tray patch version-sensitive. Waybar 0.12 tray pixmap limits remain. See README and VALIDATION for scope. Review asset rights before public distribution. No GitHub push/tag has been performed by the assistant.

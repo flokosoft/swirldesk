@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$HOME/.config/swirldesk"
+P="$ROOT/plasma/matrix"
+if [[ ${1:-} != plasma ]]; then
+  echo 'Usage: swirl-matrix plasma apply [clean|code-rain|construct] | profile NAME | restore | doctor | power | launcher' >&2
+  exit 2
+fi
+shift
+[[ $# -gt 0 ]] || set -- doctor
+case "${1:-doctor}" in
+  apply|restore|profile|doctor) exec python3 "$P/manage.py" "$@" ;;
+  power) exec "$P/session/open.sh" ;;
+  launcher) exec "$P/session/launcher.sh" ;;
+  *) echo 'Unknown MATRIX Plasma action' >&2; exit 2 ;;
+esac

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$HOME/.config/swirldesk"
+case "${1:-}" in
+  matrix) exec "$ROOT/bin/swirl-matrix" plasma apply "${@:2}";;
+  restore-matrix) exec "$ROOT/bin/swirl-matrix" plasma restore;;
+  field)
+    [[ ${XDG_CURRENT_DESKTOP:-} == *KDE* ]] && pgrep -u "$(id -u)" -x plasmashell >/dev/null || { echo 'In einer laufenden KDE-Plasma-Sitzung ausführen.'; exit 1; }
+    [[ ! -e "$ROOT/state/plasma_matrix/active.json" ]] || { echo 'Zuerst MATRIX mit swirldesk-plasma restore-matrix verlassen.'; exit 1; }
+    echo 'FIELD ändert das Plasma-Panel, KWin-Shortcuts und das Tray. Vorherige Einstellungen werden gesichert.'
+    read -r -p 'FIELD vollständig anwenden? [y/N] ' choice
+    [[ $choice == y || $choice == Y || $choice == j || $choice == J ]] || exit 0
+    F="$ROOT/bin/swirl-field"
+    "$F" plasma backup
+    "$F" plasma apply
+    for step in panel interaction window shell visual dolphin icons; do "$F" plasma "$step" apply; done
+    ;;
+  *) echo 'Usage: swirldesk-plasma field | matrix [clean|code-rain|construct] | restore-matrix'; exit 2;;
+esac
